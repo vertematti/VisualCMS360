@@ -1,5 +1,3 @@
-# VisualCMS360°
-
 <p align="center">
   <img src="public/VisualCMS360header.png" alt="Visual CMS 360°" height="48">
 </p>
@@ -178,6 +176,6 @@ Este é um **editor local** — não está preparado para produção como servi�
 ---
 
 <p align="center">
-  Feito com ❤️ por <a href="https://gersonlv.com.br">Gerson Luis Vertematti</a> ·
+  <a href="https://gersonlv.com.br">Gerson Luis Vertematti</a> ·
   <a href="https://www.dispensados.com.br">Open Maker</a>
 </p>
