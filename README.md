@@ -1,4 +1,4 @@
-<p align="center" style="background-color:#fff;">
+<p align="center" style="background-color: white;">
   <img src="public/VisualCMS360header.png" alt="Visual CMS 360°" height="48">
 </p>
 
@@ -17,6 +17,7 @@
 ## 👤 Autor
 
 | | |
+|---|---|
 | **Nome** | Gerson Luis Vertematti |
 | **Portal** | [gersonlv.com.br](https://gersonlv.com.br) |
 | **Contato** | [gersonlv@gmail.com](mailto:gersonlv@gmail.com) |
