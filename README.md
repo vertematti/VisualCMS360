@@ -1,8 +1,12 @@
-<div style="background-color: white;">
-<p align="center">
+<table>
+  <tr>
+    <td style="background-color: #ffffff;">
+    <p align="center">
   <img src="public/VisualCMS360header.png" alt="Visual CMS 360°" height="48">
 </p>
-</div>
+</td>
+  </tr>
+</table>
 
 <p align="center">
   <strong>Editor CMS local para criação de sites estáticos com tours virtuais 360°, galerias de fotos e edição visual drag-and-drop.</strong>
