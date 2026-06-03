@@ -2894,6 +2894,204 @@
     ]);
 
 
+    // ── Botão Sobre (painel lateral) ─────────────────────────────────────────
+    editor.Panels.addButton('views', [
+      {
+        id: 'cms-about',
+        label: `<span style="font-size:11px;font-weight:600;letter-spacing:0.03em;padding:0 4px;">Sobre</span>`,
+        command: 'cms-open-about',
+        attributes: { title: 'Sobre o VisualCMS360°' },
+        active: false,
+        togglable: true,
+        className: 'gjs-pn-btn cms-about-btn',
+      }
+    ]);
+
+    // ── Painel lateral "Sobre" ────────────────────────────────────────────────
+    (function() {
+      // Injeta estilos do painel uma única vez
+      if (!document.getElementById('cms-about-styles')) {
+        var st = document.createElement('style');
+        st.id = 'cms-about-styles';
+        st.textContent = `
+          .cms-about-btn { color: #a78bfa !important; }
+          .cms-about-btn:hover, .cms-about-btn.gjs-pn-active { color: #c4b5fd !important; background: rgba(167,139,250,0.12) !important; }
+          #cms-about-panel {
+            display: none;
+            position: absolute;
+            inset: 0;
+            overflow-y: auto;
+            background: #232435;
+            z-index: 10;
+            padding: 18px 16px 24px;
+            font-family: system-ui, sans-serif;
+            color: #e2e4ef;
+            animation: cmsAboutFadeIn 0.18s ease;
+          }
+          #cms-about-panel.active { display: block; }
+          @keyframes cmsAboutFadeIn { from{opacity:0;transform:translateX(8px)} to{opacity:1;transform:none} }
+          #cms-about-panel h3 {
+            margin: 0 0 10px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+          }
+          #cms-about-panel a { text-decoration: none; }
+          #cms-about-panel a:hover { text-decoration: underline; }
+          .cms-about-section { margin-bottom: 20px; }
+          .cms-about-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 0 0 18px; }
+          .cms-about-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 5px 12px;
+            font-size: 12.5px;
+            line-height: 1.6;
+          }
+          .cms-about-label { color: #6b7280; white-space: nowrap; }
+          .cms-about-value { color: #e2e4ef; }
+          .cms-about-link { color: #60a5fa; }
+          .cms-about-lic-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 12px;
+          }
+          .cms-about-lic-row:last-child { border-bottom: none; }
+          .cms-about-badge {
+            font-size: 10.5px;
+            font-weight: 600;
+            padding: 1px 7px;
+            border-radius: 4px;
+            background: rgba(245,158,11,0.15);
+            color: #f59e0b;
+          }
+          .cms-about-badge-sec {
+            font-size: 10.5px;
+            color: #6b7280;
+          }
+          #cms-about-logo-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px 0 18px;
+          }
+          #cms-about-logo-wrap img { height: 22px; width: auto; }
+          #cms-about-footer {
+            text-align: center;
+            font-size: 11px;
+            color: #4b5563;
+            margin-top: 6px;
+          }
+        `;
+        document.head.appendChild(st);
+      }
+
+      // Cria o painel e injeta no views-container
+      function buildAboutPanel() {
+        if (document.getElementById('cms-about-panel')) return;
+        var container = document.querySelector('.gjs-pn-views-container');
+        if (!container) { setTimeout(buildAboutPanel, 200); return; }
+
+        var panel = document.createElement('div');
+        panel.id = 'cms-about-panel';
+        panel.innerHTML = `
+          <div id="cms-about-logo-wrap">
+            <img src="/VisualCMS360header.png" alt="Visual CMS 360°">
+          </div>
+
+          <div class="cms-about-section">
+            <h3 style="color:#60a5fa;">👤 Autor</h3>
+            <div class="cms-about-grid">
+              <span class="cms-about-label">Nome</span>
+              <span class="cms-about-value" style="font-weight:600;">Gerson Luis Vertematti</span>
+              <span class="cms-about-label">Portal</span>
+              <a class="cms-about-link" href="https://gersonlv.com.br" target="_blank">gersonlv.com.br</a>
+              <span class="cms-about-label">Contato</span>
+              <a class="cms-about-link" href="mailto:gersonlv@gmail.com">gersonlv@gmail.com</a>
+              <span class="cms-about-label">Docs</span>
+              <a class="cms-about-link" href="https://gersonlv.com.br/visual_cms_360" target="_blank">gersonlv.com.br/visual_cms_360</a>
+              <span class="cms-about-label">GitHub</span>
+              <a class="cms-about-link" href="https://github.com/vertematti/VisualCMS360" target="_blank">github.com/vertematti/VisualCMS360</a>
+            </div>
+          </div>
+
+          <hr class="cms-about-divider">
+
+          <div class="cms-about-section">
+            <h3 style="color:#34d399;">🌟 Open Maker</h3>
+            <p style="margin:0;font-size:12.5px;line-height:1.7;color:#c9cce0;">
+              Gerson é <strong style="color:#34d399;">Educador Maker voluntário</strong> do
+              <a style="color:#34d399;" href="https://www.dispensados.com.br" target="_blank">Open Maker</a>,
+              iniciativa dedicada à educação criativa e cultura maker.
+              O VisualCMS360° nasceu desse espírito: uma ferramenta aberta e acessível para criadores de conteúdo.
+            </p>
+          </div>
+
+          <hr class="cms-about-divider">
+
+          <div class="cms-about-section">
+            <h3 style="color:#f59e0b;">📄 Licenças</h3>
+            <div>
+              <div class="cms-about-lic-row"><span style="color:#e2e4ef;font-weight:600;">VisualCMS360°</span><span class="cms-about-badge">MIT</span></div>
+              <div class="cms-about-lic-row"><span style="color:#9ca3af;">Astro / @astrojs/node</span><span class="cms-about-badge-sec">MIT</span></div>
+              <div class="cms-about-lic-row"><span style="color:#9ca3af;">GrapesJS</span><span class="cms-about-badge-sec">BSD-3-Clause</span></div>
+              <div class="cms-about-lic-row"><span style="color:#9ca3af;">grapesjs-blocks-basic</span><span class="cms-about-badge-sec">BSD-3-Clause</span></div>
+              <div class="cms-about-lic-row"><span style="color:#9ca3af;">grapesjs-tailwind</span><span class="cms-about-badge-sec">MIT</span></div>
+              <div class="cms-about-lic-row"><span style="color:#9ca3af;">A-Frame</span><span class="cms-about-badge-sec">MIT</span></div>
+              <div class="cms-about-lic-row"><span style="color:#9ca3af;">Pannellum</span><span class="cms-about-badge-sec">MIT</span></div>
+              <div class="cms-about-lic-row"><span style="color:#9ca3af;">Tailwind CSS</span><span class="cms-about-badge-sec">MIT</span></div>
+              <div class="cms-about-lic-row"><span style="color:#9ca3af;">Cheerio</span><span class="cms-about-badge-sec">MIT</span></div>
+            </div>
+          </div>
+
+        `;
+        container.appendChild(panel);
+      }
+
+      // Comando togglable: run = abrir painel, stop = fechar
+      editor.Commands.add('cms-open-about', {
+        run: function() {
+          buildAboutPanel();
+          var panel = document.getElementById('cms-about-panel');
+          if (panel) panel.classList.add('active');
+          var btn = editor.Panels.getButton('views', 'cms-about');
+          if (btn) btn.set('active', true);
+        },
+        stop: function() {
+          var panel = document.getElementById('cms-about-panel');
+          if (panel) panel.classList.remove('active');
+          var btn = editor.Panels.getButton('views', 'cms-about');
+          if (btn) btn.set('active', false);
+        }
+      });
+
+      // Abre o painel Sobre por padrão ao carregar o editor de páginas
+      editor.on('load', function() {
+        buildAboutPanel();
+        setTimeout(function() {
+          editor.runCommand('cms-open-about');
+        }, 300);
+      });
+    }());
+
+    // ── Listener do logo: anexado após injeção no DOM (chamado de doInject) ──
+    function cmsAttachLogoClick() {
+      var logo = document.getElementById('cms-toolbar-logo');
+      if (!logo || logo._cmsAboutBound) return;
+      logo._cmsAboutBound = true;
+      logo.style.cursor = 'pointer';
+      logo.title = 'Sobre o VisualCMS360°';
+      logo.addEventListener('click', function() {
+        var panel = document.getElementById('cms-about-panel');
+        var isOpen = panel && panel.classList.contains('active');
+        if (isOpen) editor.stopCommand('cms-open-about');
+        else editor.runCommand('cms-open-about');
+      });
+    }
+
     // ── Export: baixa ZIP com pages.json + components.json + uploads ────────
     function cmsExportProject() {
       const a = document.createElement('a');
@@ -3343,9 +3541,11 @@
             img.src = '/VisualCMS360header.png';
             img.alt = 'Visual CMS 360°';
             img.draggable = false;
-            img.style.cssText = 'height:24px;width:auto;display:block;pointer-events:none;user-select:none;';
+            img.style.cssText = 'height:24px;width:auto;display:block;user-select:none;';
             logo.appendChild(img);
             devPanel.prepend(logo);
+            // Anexa o listener de click após injeção no DOM
+            setTimeout(cmsAttachLogoClick, 100);
           }
 
           // ── Injetar regra CSS global via <style> para garantir ocultamento ──
