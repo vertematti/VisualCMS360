@@ -22,7 +22,7 @@
 
 ## 👤 Autor
 
-| **Nome** | Gerson Luis Vertematti |
+| **Ogro-mor** | Gerson Luis Vertematti |
 |---|---|
 | **Portal** | [gersonlv.com.br](https://gersonlv.com.br) |
 | **Contato** | [gersonlv@gmail.com](mailto:gersonlv@gmail.com) |
