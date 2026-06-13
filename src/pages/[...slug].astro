@@ -64,8 +64,19 @@ if (finalHtml) {
 ---
 
 <Layout>
-  <!-- CSS from GrapesJS injected in slot (Layout puts slot in body) -->
-  <style set:html={finalCss}></style>
+  <!-- CSS from GrapesJS — is:global para evitar scoping do Astro -->
+  <!-- Necessário para position:sticky, position:fixed funcionarem -->
+  <style is:global set:html={finalCss}></style>
+
+  <!-- O wrapper [data-component-id] envolve cada componente compartilhado.
+       Se ele gerar uma caixa própria, ela tem a altura do componente e
+       PRENDE o position:sticky/fixed dos filhos (ex.: #navbar) a essa altura,
+       fazendo o cabeçalho descolar do topo ao rolar a página.
+       display:contents remove a caixa do wrapper (mantendo os atributos),
+       tornando o filho um filho direto do body — o contexto de rolagem real. -->
+  <style is:global>
+    [data-component-id] { display: contents; }
+  </style>
   
   <!-- Page HTML from GrapesJS -->
   <Fragment set:html={finalHtml} />

@@ -49,8 +49,8 @@
           storageManager: false,
           allowScripts: 1,
           canvas: {
-            scripts: ['/vendor/jquery.min.js'],
-            styles: ['/vendor/fontawesome/css/all.min.css'],
+            scripts: [window.location.origin + '/vendor/jquery.min.js'],
+            styles:  [window.location.origin + '/vendor/fontawesome/css/all-canvas.css'],
           },
           plugins: cfg.plugins,
           pluginsOpts: {
@@ -2575,6 +2575,19 @@
       }
     }
 
+    function showToast(msg, type = 'success') {
+      const t = document.createElement('div');
+      t.textContent = msg;
+      t.style.cssText = `
+        position:fixed;bottom:24px;right:24px;z-index:99999;
+        background:${type === 'success' ? '#22c55e' : '#ef4444'};
+        color:#fff;padding:10px 20px;border-radius:6px;font-size:14px;
+        box-shadow:0 4px 12px rgba(0,0,0,.3);font-family:sans-serif;
+      `;
+      document.body.appendChild(t);
+      setTimeout(() => t.remove(), 3000);
+    }
+
     async function savePage() {
       try {
         // ── Sincronizar dados dos tours virtuais nos atributos HTML antes de salvar ──
@@ -2621,14 +2634,14 @@
           body: JSON.stringify(payload)
         });
         if (res.ok) {
-          alert(`Página "${currentSlug}" salva com sucesso!`);
+          showToast(`Página "${currentSlug}" salva com sucesso!`, 'success');
         } else {
-          alert('Erro ao salvar! Verifique o console.');
+          showToast('Erro ao salvar! Verifique o console.', 'error');
           console.error('Save error:', await res.text());
         }
       } catch(e) {
         console.error('Save error:', e);
-        alert('Erro de rede ao salvar.');
+        showToast('Erro de rede ao salvar.', 'error');
       }
     }
 
@@ -2760,7 +2773,7 @@
                     <path d="M13 2L4.09 12.97A1 1 0 0 0 5 14.5h5.5L11 22l8.91-10.97A1 1 0 0 0 19 9.5h-5.5L13 2z"/>
                   </svg>`,
       className: 'gjs-pn-btn cms-build-btn',
-      attributes: { title: 'Build — Gerar site estático (npm run build)' },
+      attributes: { title: 'Build — Gerar site estático em /dist-static' },
       command:   { run: (ed, sender) => { sender && sender.set('active', 0); runBuild(); } }
     }]);
 
@@ -3465,7 +3478,7 @@
 
       const footerNote = document.createElement('span');
       footerNote.style.cssText = 'font-size:11px;color:#555;';
-      footerNote.textContent = 'Arquivos gerados em /dist';
+      footerNote.textContent = 'Site estático gerado em /dist-static';
 
       const closeBtn = document.createElement('button');
       closeBtn.textContent = '⏳ Aguarde...';
@@ -3633,17 +3646,35 @@
 
         // ── Syntax highlighter simples ──────────────────────────────────────
         function highlightHTML(code) {
-          return code
-            .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-            // strings em atributos
-            .replace(/(&quot;[^&]*&quot;|'[^']*')/g,'<span style="color:#ce9178">$1</span>')
-            // tags
-            .replace(/(&lt;\/?)([\w-]+)/g,'$1<span style="color:#4ec9b0">$2</span>')
-            // atributos
-            .replace(/\s([\w:-]+)=/g,' <span style="color:#9cdcfe">$1</span>=')
-            // comentários
-            .replace(/(&lt;!--[\s\S]*?--&gt;)/g,'<span style="color:#6a9955">$1</span>');
+          // Escape primeiro
+          let out = code
+            .replace(/&/g,'&amp;')
+            .replace(/</g,'&lt;')
+            .replace(/>/g,'&gt;');
+
+          // Comentários HTML
+          out = out.replace(/(&lt;!--[\s\S]*?--&gt;)/g,
+            '<span style="color:#6a9955">$1</span>');
+
+          // Tags completas: nome + atributos + fechamento
+          out = out.replace(/(&lt;\/?)([\w-]+)(\s[^&]*?)?(\/?&gt;)/g,
+            function(m, open, tag, attrs, close) {
+              let result = open + '<span style="color:#4ec9b0">' + tag + '</span>';
+              if (attrs) {
+                let a = attrs
+                  .replace(/([\w:-]+)(=)/g,
+                    '<span style="color:#9cdcfe">$1</span>$2')
+                  .replace(/(=)(&quot;[^&]*?&quot;|'[^']*?')/g,
+                    '$1<span style="color:#ce9178">$2</span>');
+                result += a;
+              }
+              result += (close || '');
+              return result;
+            });
+
+          return out;
         }
+
         function highlightCSS(code) {
           return code
             .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')

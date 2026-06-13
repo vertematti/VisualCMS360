@@ -13,6 +13,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "export:static": "node scripts/export-static.mjs",
     "postinstall": "node scripts/copy-vendor.mjs"
   },
   "dependencies": {

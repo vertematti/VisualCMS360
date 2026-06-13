@@ -1,1 +1,922 @@
-{}
+{
+  "cabeçalho": {
+    "name": "cabeçalho",
+    "html": "<body id=\"ifwj\"><nav id=\"navbar\"><div class=\"nav-inner\"><a href=\"#hero\" class=\"logo-text\"><i class=\"fas fa-code\"></i>\n      Gerson LV\n    </a><button id=\"hamburger\" aria-label=\"Menu\"><i class=\"fas fa-bars\"></i></button><ul id=\"nav-links\"><li><a href=\"#sobre\" id=\"i8vav\">\n          Sobre\n        </a></li><li><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/professional-skills.html\" target=\"_blank\" id=\"i1dg8\">\n          Profissional\n        </a></li><li><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/maker-skills.html\" target=\"_blank\" id=\"ieabr\">\n          Maker\n        </a></li><li><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/services.html\" target=\"_blank\" id=\"i120i\">\n          Serviços\n        </a></li><li><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/systems.html\" target=\"_blank\">\n          Tour Virtual\n        </a></li><li><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/maker-projects.html\" target=\"_blank\">\n          Drones\n        </a></li><li><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/documents.html\" target=\"_blank\">\n          Downloads\n        </a></li><li><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/postagens.html\" target=\"_blank\">\n          Postagens\n        </a></li></ul></div></nav></body>",
+    "js": "",
+    "css": "* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}#navbar{position:sticky;top:0px;z-index:100;box-shadow:rgba(0, 0, 0, 0.25) 0px 2px 12px;}#navbar .nav-inner{max-width:1200px;margin-top:0px;margin-right:auto;margin-bottom:0px;margin-left:auto;padding-top:0px;padding-right:24px;padding-bottom:0px;padding-left:24px;display:flex;align-items:center;justify-content:space-between;height:64px;}#navbar .logo-text{color:rgb(255, 255, 255);font-size:1.25rem;font-weight:700;letter-spacing:0.02em;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;display:flex;align-items:center;row-gap:10px;column-gap:10px;}#navbar .logo-text i{color:var(--accent);font-size:1.4rem;}#nav-links{display:flex;row-gap:4px;column-gap:4px;list-style-position:outside;list-style-image:none;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}#nav-links a{color:rgba(255, 255, 255, 0.82);text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;font-size:0.875rem;font-weight:500;padding-top:6px;padding-right:12px;padding-bottom:6px;padding-left:12px;border-top-left-radius:6px;border-top-right-radius:6px;border-bottom-right-radius:6px;border-bottom-left-radius:6px;transition-property:background, color;transition-duration:0.15s, 0.15s;transition-timing-function:ease, ease;transition-delay:0s, 0s;transition-behavior:normal, normal;}#nav-links a:hover{background-color:rgba(255, 255, 255, 0.12);background-position-x:0%;background-position-y:0%;background-repeat:repeat;background-attachment:scroll;background-image:none;background-size:auto;background-origin:padding-box;background-clip:border-box;color:rgb(255, 255, 255);}#hamburger{display:none;background-color:rgba(0, 0, 0, 0);background-position-x:0%;background-position-y:0%;background-repeat:repeat;background-attachment:scroll;background-image:none;background-size:auto;background-origin:padding-box;background-clip:border-box;border-top-width:medium;border-top-style:none;border-top-color:currentcolor;border-right-width:medium;border-right-style:none;border-right-color:currentcolor;border-bottom-width:medium;border-bottom-style:none;border-bottom-color:currentcolor;border-left-width:medium;border-left-style:none;border-left-color:currentcolor;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;color:rgb(255, 255, 255);font-size:1.4rem;cursor:pointer;padding-top:6px;padding-right:6px;padding-bottom:6px;padding-left:6px;}.nav-inner{background-color:rgba(6, 6, 6, 0.74);position:sticky;z-index:1000;}@media (max-width: 768px){#hamburger{display:block;}#nav-links{background-color:rgba(6, 6, 6, 0.74);display:none;flex-direction:column;position:absolute;top:64px;left:0px;right:0px;padding-top:12px;padding-right:16px;padding-bottom:20px;padding-left:16px;row-gap:2px;column-gap:2px;box-shadow:rgba(0, 0, 0, 0.3) 0px 8px 16px;}#nav-links.open{display:flex;}}",
+    "projectData": {
+      "dataSources": [],
+      "assets": [
+        {
+          "type": "image",
+          "src": "/api/assets/load",
+          "unitDim": "px",
+          "height": 0,
+          "width": 0
+        }
+      ],
+      "styles": [
+        {
+          "selectors": [],
+          "selectorsAdd": "*",
+          "style": {
+            "box-sizing": "border-box"
+          }
+        },
+        {
+          "selectors": [],
+          "selectorsAdd": "body",
+          "style": {
+            "margin-top": "0px",
+            "margin-right": "0px",
+            "margin-bottom": "0px",
+            "margin-left": "0px"
+          }
+        },
+        {
+          "selectors": [],
+          "selectorsAdd": "*",
+          "style": {
+            "box-sizing": "border-box"
+          }
+        },
+        {
+          "selectors": [],
+          "selectorsAdd": "body",
+          "style": {
+            "margin-top": "0px",
+            "margin-right": "0px",
+            "margin-bottom": "0px",
+            "margin-left": "0px"
+          }
+        },
+        {
+          "selectors": [
+            "#navbar"
+          ],
+          "style": {
+            "position": "sticky",
+            "top": "0px",
+            "z-index": "100",
+            "box-shadow": "rgba(0, 0, 0, 0.25) 0px 2px 12px"
+          }
+        },
+        {
+          "selectors": [],
+          "selectorsAdd": "#navbar .nav-inner",
+          "style": {
+            "max-width": "1200px",
+            "margin-top": "0px",
+            "margin-right": "auto",
+            "margin-bottom": "0px",
+            "margin-left": "auto",
+            "padding-top": "0px",
+            "padding-right": "24px",
+            "padding-bottom": "0px",
+            "padding-left": "24px",
+            "display": "flex",
+            "align-items": "center",
+            "justify-content": "space-between",
+            "height": "64px"
+          }
+        },
+        {
+          "selectors": [],
+          "selectorsAdd": "#navbar .logo-text",
+          "style": {
+            "color": "rgb(255, 255, 255)",
+            "font-size": "1.25rem",
+            "font-weight": "700",
+            "letter-spacing": "0.02em",
+            "text-decoration-color": "currentcolor",
+            "text-decoration-line": "none",
+            "text-decoration-style": "solid",
+            "text-decoration-thickness": "auto",
+            "display": "flex",
+            "align-items": "center",
+            "row-gap": "10px",
+            "column-gap": "10px"
+          }
+        },
+        {
+          "selectors": [],
+          "selectorsAdd": "#navbar .logo-text i",
+          "style": {
+            "color": "var(--accent)",
+            "font-size": "1.4rem"
+          }
+        },
+        {
+          "selectors": [
+            "#nav-links"
+          ],
+          "style": {
+            "display": "flex",
+            "row-gap": "4px",
+            "column-gap": "4px",
+            "list-style-position": "outside",
+            "list-style-image": "none",
+            "list-style-type": "none",
+            "margin-top": "0px",
+            "margin-right": "0px",
+            "margin-bottom": "0px",
+            "margin-left": "0px",
+            "padding-top": "0px",
+            "padding-right": "0px",
+            "padding-bottom": "0px",
+            "padding-left": "0px"
+          }
+        },
+        {
+          "selectors": [],
+          "selectorsAdd": "#nav-links a",
+          "style": {
+            "color": "rgba(255, 255, 255, 0.82)",
+            "text-decoration-color": "currentcolor",
+            "text-decoration-line": "none",
+            "text-decoration-style": "solid",
+            "text-decoration-thickness": "auto",
+            "font-size": "0.875rem",
+            "font-weight": "500",
+            "padding-top": "6px",
+            "padding-right": "12px",
+            "padding-bottom": "6px",
+            "padding-left": "12px",
+            "border-top-left-radius": "6px",
+            "border-top-right-radius": "6px",
+            "border-bottom-right-radius": "6px",
+            "border-bottom-left-radius": "6px",
+            "transition-property": "background, color",
+            "transition-duration": "0.15s, 0.15s",
+            "transition-timing-function": "ease, ease",
+            "transition-delay": "0s, 0s",
+            "transition-behavior": "normal, normal"
+          }
+        },
+        {
+          "selectors": [],
+          "selectorsAdd": "#nav-links a:hover",
+          "style": {
+            "background-color": "rgba(255, 255, 255, 0.12)",
+            "background-position-x": "0%",
+            "background-position-y": "0%",
+            "background-repeat": "repeat",
+            "background-attachment": "scroll",
+            "background-image": "none",
+            "background-size": "auto",
+            "background-origin": "padding-box",
+            "background-clip": "border-box",
+            "color": "rgb(255, 255, 255)"
+          }
+        },
+        {
+          "selectors": [
+            "#hamburger"
+          ],
+          "style": {
+            "display": "none",
+            "background-color": "rgba(0, 0, 0, 0)",
+            "background-position-x": "0%",
+            "background-position-y": "0%",
+            "background-repeat": "repeat",
+            "background-attachment": "scroll",
+            "background-image": "none",
+            "background-size": "auto",
+            "background-origin": "padding-box",
+            "background-clip": "border-box",
+            "border-top-width": "medium",
+            "border-top-style": "none",
+            "border-top-color": "currentcolor",
+            "border-right-width": "medium",
+            "border-right-style": "none",
+            "border-right-color": "currentcolor",
+            "border-bottom-width": "medium",
+            "border-bottom-style": "none",
+            "border-bottom-color": "currentcolor",
+            "border-left-width": "medium",
+            "border-left-style": "none",
+            "border-left-color": "currentcolor",
+            "border-image-outset": "0",
+            "border-image-repeat": "stretch",
+            "border-image-slice": "100%",
+            "border-image-source": "none",
+            "border-image-width": "1",
+            "color": "rgb(255, 255, 255)",
+            "font-size": "1.4rem",
+            "cursor": "pointer",
+            "padding-top": "6px",
+            "padding-right": "6px",
+            "padding-bottom": "6px",
+            "padding-left": "6px"
+          }
+        },
+        {
+          "selectors": [
+            "nav-inner"
+          ],
+          "style": {
+            "background-color": "rgba(6, 6, 6, 0.74)",
+            "position": "sticky",
+            "z-index": "1000"
+          }
+        },
+        {
+          "selectors": [
+            "#hamburger"
+          ],
+          "style": {
+            "display": "block"
+          },
+          "mediaText": "(max-width: 768px)",
+          "atRuleType": "media"
+        },
+        {
+          "selectors": [
+            "#nav-links"
+          ],
+          "style": {
+            "background-color": "rgba(6, 6, 6, 0.74)",
+            "display": "none",
+            "flex-direction": "column",
+            "position": "absolute",
+            "top": "64px",
+            "left": "0px",
+            "right": "0px",
+            "padding-top": "12px",
+            "padding-right": "16px",
+            "padding-bottom": "20px",
+            "padding-left": "16px",
+            "row-gap": "2px",
+            "column-gap": "2px",
+            "box-shadow": "rgba(0, 0, 0, 0.3) 0px 8px 16px"
+          },
+          "mediaText": "(max-width: 768px)",
+          "atRuleType": "media"
+        },
+        {
+          "selectors": [],
+          "selectorsAdd": "#nav-links.open",
+          "style": {
+            "display": "flex"
+          },
+          "mediaText": "(max-width: 768px)",
+          "atRuleType": "media"
+        }
+      ],
+      "pages": [
+        {
+          "frames": [
+            {
+              "component": {
+                "type": "wrapper",
+                "stylable": [
+                  "background",
+                  "background-color",
+                  "background-image",
+                  "background-repeat",
+                  "background-attachment",
+                  "background-position",
+                  "background-size"
+                ],
+                "attributes": {
+                  "id": "ifwj"
+                },
+                "components": [
+                  {
+                    "tagName": "nav",
+                    "attributes": {
+                      "id": "navbar"
+                    },
+                    "components": [
+                      {
+                        "classes": [
+                          "nav-inner"
+                        ],
+                        "components": [
+                          {
+                            "type": "link",
+                            "classes": [
+                              "logo-text"
+                            ],
+                            "attributes": {
+                              "href": "#hero"
+                            },
+                            "components": [
+                              {
+                                "type": "fa-icon",
+                                "classes": [
+                                  "fas",
+                                  "fa-code"
+                                ]
+                              },
+                              {
+                                "type": "textnode",
+                                "content": "\n      Gerson LV\n    "
+                              }
+                            ]
+                          },
+                          {
+                            "tagName": "button",
+                            "attributes": {
+                              "id": "hamburger",
+                              "aria-label": "Menu"
+                            },
+                            "components": [
+                              {
+                                "type": "fa-icon",
+                                "classes": [
+                                  "fas",
+                                  "fa-bars"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "tagName": "ul",
+                            "attributes": {
+                              "id": "nav-links"
+                            },
+                            "components": [
+                              {
+                                "tagName": "li",
+                                "components": [
+                                  {
+                                    "type": "link",
+                                    "attributes": {
+                                      "href": "#sobre",
+                                      "id": "i8vav"
+                                    },
+                                    "components": [
+                                      {
+                                        "type": "textnode",
+                                        "content": "\n          Sobre\n        "
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "tagName": "li",
+                                "components": [
+                                  {
+                                    "type": "link",
+                                    "attributes": {
+                                      "href": "https://gersonlv.com.br/gersonlv.com.br/index.php/professional-skills.html",
+                                      "target": "_blank",
+                                      "id": "i1dg8"
+                                    },
+                                    "components": [
+                                      {
+                                        "type": "textnode",
+                                        "content": "\n          Profissional\n        "
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "tagName": "li",
+                                "components": [
+                                  {
+                                    "type": "link",
+                                    "attributes": {
+                                      "href": "https://gersonlv.com.br/gersonlv.com.br/index.php/maker-skills.html",
+                                      "target": "_blank",
+                                      "id": "ieabr"
+                                    },
+                                    "components": [
+                                      {
+                                        "type": "textnode",
+                                        "content": "\n          Maker\n        "
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "tagName": "li",
+                                "components": [
+                                  {
+                                    "type": "link",
+                                    "attributes": {
+                                      "href": "https://gersonlv.com.br/gersonlv.com.br/index.php/services.html",
+                                      "target": "_blank",
+                                      "id": "i120i"
+                                    },
+                                    "components": [
+                                      {
+                                        "type": "textnode",
+                                        "content": "\n          Serviços\n        "
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "tagName": "li",
+                                "components": [
+                                  {
+                                    "type": "link",
+                                    "attributes": {
+                                      "href": "https://gersonlv.com.br/gersonlv.com.br/index.php/systems.html",
+                                      "target": "_blank"
+                                    },
+                                    "components": [
+                                      {
+                                        "type": "textnode",
+                                        "content": "\n          Tour Virtual\n        "
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "tagName": "li",
+                                "components": [
+                                  {
+                                    "type": "link",
+                                    "attributes": {
+                                      "href": "https://gersonlv.com.br/gersonlv.com.br/index.php/maker-projects.html",
+                                      "target": "_blank"
+                                    },
+                                    "components": [
+                                      {
+                                        "type": "textnode",
+                                        "content": "\n          Drones\n        "
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "tagName": "li",
+                                "components": [
+                                  {
+                                    "type": "link",
+                                    "attributes": {
+                                      "href": "https://gersonlv.com.br/gersonlv.com.br/index.php/documents.html",
+                                      "target": "_blank"
+                                    },
+                                    "components": [
+                                      {
+                                        "type": "textnode",
+                                        "content": "\n          Downloads\n        "
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "tagName": "li",
+                                "components": [
+                                  {
+                                    "type": "link",
+                                    "attributes": {
+                                      "href": "https://gersonlv.com.br/gersonlv.com.br/index.php/postagens.html",
+                                      "target": "_blank"
+                                    },
+                                    "components": [
+                                      {
+                                        "type": "textnode",
+                                        "content": "\n          Postagens\n        "
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "head": {
+                  "type": "head"
+                },
+                "docEl": {
+                  "tagName": "html"
+                }
+              },
+              "id": "g5OZKDaSJGXI0Vut"
+            }
+          ],
+          "type": "main",
+          "id": "lhbiRbRIMsN6DZOa"
+        }
+      ],
+      "symbols": []
+    },
+    "updatedAt": "2026-06-13T06:25:35.448Z"
+  },
+  "rodapé": {
+    "name": "rodapé",
+    "html": "<body id=\"ifwj\"><footer id=\"ia7gbw\"><div id=\"iph98\" class=\"social-links\"><a href=\"mailto:gersonlv@gmail.com\" title=\"E-mail\"><i class=\"fas fa-envelope\"></i></a><a href=\"https://www.instagram.com/gerson.vertematti/\" target=\"_blank\" title=\"Instagram\"><i class=\"fab fa-instagram\"></i></a><a href=\"https://www.linkedin.com/in/gersonlv/\" target=\"_blank\" title=\"LinkedIn\"><i class=\"fab fa-linkedin-in\"></i></a><a href=\"https://github.com/vertematti\" target=\"_blank\" title=\"GitHub\"><i class=\"fab fa-github\"></i></a><a href=\"https://www.youtube.com/@GersonLuisVertematti\" target=\"_blank\" title=\"YouTube\"><i class=\"fab fa-youtube\"></i></a></div><div class=\"footer-links\"><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/documents.html\" target=\"_blank\">\n      Downloads\n    </a><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/postagens.html\" target=\"_blank\">\n      Postagens\n    </a><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/services.html\" target=\"_blank\">\n      Serviços\n    </a></div><p id=\"it2ho\">\n    © 2025 Gerson Luis Vertematti — System Developer &amp; Maker\n  </p></footer><!-- ── Botão Voltar ao Topo ────────────────────────────────────────────── --><button id=\"back-top\" title=\"Voltar ao topo\"><i class=\"fas fa-chevron-up\"></i></button></body>",
+    "js": "",
+    "css": "* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}footer{color:rgba(255, 255, 255, 0.65);text-align:center;padding-top:28px;padding-right:24px;padding-bottom:28px;padding-left:24px;font-size:0.85rem;}footer .footer-links{display:flex;justify-content:center;row-gap:20px;column-gap:20px;flex-wrap:wrap;margin-bottom:16px;}footer .footer-links a{color:rgba(255, 255, 255, 0.65);text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;transition-property:color;transition-duration:0.15s;transition-timing-function:ease;transition-delay:0s;transition-behavior:normal;}footer .footer-links a:hover{color:rgb(255, 255, 255);}footer #back-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;color:rgb(255, 255, 255);border-top-width:medium;border-top-style:none;border-top-color:currentcolor;border-right-width:medium;border-right-style:none;border-right-color:currentcolor;border-bottom-width:medium;border-bottom-style:none;border-bottom-color:currentcolor;border-left-width:medium;border-left-style:none;border-left-color:currentcolor;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-top-left-radius:50%;border-top-right-radius:50%;border-bottom-right-radius:50%;border-bottom-left-radius:50%;font-size:1.1rem;cursor:pointer;box-shadow:rgba(0, 0, 0, 0.2) 0px 4px 14px;opacity:0;transition-property:opacity;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-behavior:normal;z-index:50;}#back-top.show{opacity:1;}#ia7gbw{background-color:rgba(6,6,6,0.74);}\n.social-links { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:8px; }\n.social-links a {\n  width:42px; height:42px;\n  border-radius:50%;\n  background:rgba(255,255,255,0.12);\n  color:#fff;\n  display:flex; align-items:center; justify-content:center;\n  font-size:1rem;\n  text-decoration:none;\n  transition:background 0.2s, transform 0.2s;\n  border:1px solid rgba(255,255,255,0.2);\n}\n.social-links a:hover { background:var(--accent,#2d8cf0); transform:translateY(-3px); border-color:var(--accent,#2d8cf0); }\n",
+    "projectData": {
+      "dataSources": [],
+      "assets": [
+        {
+          "type": "image",
+          "src": "/api/assets/load",
+          "unitDim": "px",
+          "height": 0,
+          "width": 0
+        }
+      ],
+      "styles": [
+        {
+          "selectors": [],
+          "selectorsAdd": "*",
+          "style": {
+            "box-sizing": "border-box"
+          }
+        },
+        {
+          "selectors": [],
+          "selectorsAdd": "body",
+          "style": {
+            "margin-top": "0px",
+            "margin-right": "0px",
+            "margin-bottom": "0px",
+            "margin-left": "0px"
+          }
+        },
+        {
+          "selectors": [],
+          "selectorsAdd": "footer",
+          "style": {
+            "color": "rgba(255, 255, 255, 0.65)",
+            "text-align": "center",
+            "padding-top": "28px",
+            "padding-right": "24px",
+            "padding-bottom": "28px",
+            "padding-left": "24px",
+            "font-size": "0.85rem"
+          }
+        },
+        {
+          "selectors": [],
+          "selectorsAdd": "footer .footer-links",
+          "style": {
+            "display": "flex",
+            "justify-content": "center",
+            "row-gap": "20px",
+            "column-gap": "20px",
+            "flex-wrap": "wrap",
+            "margin-bottom": "16px"
+          }
+        },
+        {
+          "selectors": [],
+          "selectorsAdd": "footer .footer-links a",
+          "style": {
+            "color": "rgba(255, 255, 255, 0.65)",
+            "text-decoration-color": "currentcolor",
+            "text-decoration-line": "none",
+            "text-decoration-style": "solid",
+            "text-decoration-thickness": "auto",
+            "transition-property": "color",
+            "transition-duration": "0.15s",
+            "transition-timing-function": "ease",
+            "transition-delay": "0s",
+            "transition-behavior": "normal"
+          }
+        },
+        {
+          "selectors": [],
+          "selectorsAdd": "footer .footer-links a:hover",
+          "style": {
+            "color": "rgb(255, 255, 255)"
+          }
+        },
+        {
+          "selectors": [],
+          "selectorsAdd": "footer .social-links",
+          "style": {
+            "margin-bottom": "16px"
+          }
+        },
+        {
+          "selectors": [
+            "#back-top"
+          ],
+          "style": {
+            "position": "fixed",
+            "bottom": "28px",
+            "right": "28px",
+            "width": "44px",
+            "height": "44px",
+            "color": "rgb(255, 255, 255)",
+            "border-top-width": "medium",
+            "border-top-style": "none",
+            "border-top-color": "currentcolor",
+            "border-right-width": "medium",
+            "border-right-style": "none",
+            "border-right-color": "currentcolor",
+            "border-bottom-width": "medium",
+            "border-bottom-style": "none",
+            "border-bottom-color": "currentcolor",
+            "border-left-width": "medium",
+            "border-left-style": "none",
+            "border-left-color": "currentcolor",
+            "border-image-outset": "0",
+            "border-image-repeat": "stretch",
+            "border-image-slice": "100%",
+            "border-image-source": "none",
+            "border-image-width": "1",
+            "border-top-left-radius": "50%",
+            "border-top-right-radius": "50%",
+            "border-bottom-right-radius": "50%",
+            "border-bottom-left-radius": "50%",
+            "font-size": "1.1rem",
+            "cursor": "pointer",
+            "box-shadow": "rgba(0, 0, 0, 0.2) 0px 4px 14px",
+            "opacity": "0",
+            "transition-property": "opacity",
+            "transition-duration": "0.3s",
+            "transition-timing-function": "ease",
+            "transition-delay": "0s",
+            "transition-behavior": "normal",
+            "z-index": "50"
+          }
+        },
+        {
+          "selectors": [],
+          "selectorsAdd": "#back-top.show",
+          "style": {
+            "opacity": "1"
+          }
+        },
+        {
+          "selectors": [
+            "#ia7gbw"
+          ],
+          "style": {
+            "background-color": "rgba(6,6,6,0.74)"
+          }
+        }
+      ],
+      "pages": [
+        {
+          "frames": [
+            {
+              "component": {
+                "type": "wrapper",
+                "stylable": [
+                  "background",
+                  "background-color",
+                  "background-image",
+                  "background-repeat",
+                  "background-attachment",
+                  "background-position",
+                  "background-size"
+                ],
+                "attributes": {
+                  "id": "ifwj"
+                },
+                "components": [
+                  {
+                    "tagName": "footer",
+                    "attributes": {
+                      "id": "ia7gbw"
+                    },
+                    "components": [
+                      {
+                        "classes": [
+                          "social-links"
+                        ],
+                        "attributes": {
+                          "id": "iph98"
+                        },
+                        "components": [
+                          {
+                            "type": "link",
+                            "attributes": {
+                              "href": "mailto:gersonlv@gmail.com",
+                              "title": "E-mail"
+                            },
+                            "components": [
+                              {
+                                "tagName": "i",
+                                "type": "text",
+                                "classes": [
+                                  "fas",
+                                  "fa-envelope"
+                                ],
+                                "components": [
+                                  {
+                                    "type": "textnode",
+                                    "content": "\n      "
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "link",
+                            "attributes": {
+                              "href": "https://www.instagram.com/gerson.vertematti/",
+                              "target": "_blank",
+                              "title": "Instagram"
+                            },
+                            "components": [
+                              {
+                                "tagName": "i",
+                                "type": "text",
+                                "classes": [
+                                  "fab",
+                                  "fa-instagram"
+                                ],
+                                "components": [
+                                  {
+                                    "type": "textnode",
+                                    "content": "\n      "
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "link",
+                            "attributes": {
+                              "href": "https://www.linkedin.com/in/gersonlv/",
+                              "target": "_blank",
+                              "title": "LinkedIn"
+                            },
+                            "components": [
+                              {
+                                "tagName": "i",
+                                "type": "text",
+                                "classes": [
+                                  "fab",
+                                  "fa-linkedin-in"
+                                ],
+                                "components": [
+                                  {
+                                    "type": "textnode",
+                                    "content": "\n      "
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "link",
+                            "attributes": {
+                              "href": "https://github.com/vertematti",
+                              "target": "_blank",
+                              "title": "GitHub"
+                            },
+                            "components": [
+                              {
+                                "tagName": "i",
+                                "type": "text",
+                                "classes": [
+                                  "fab",
+                                  "fa-github"
+                                ],
+                                "components": [
+                                  {
+                                    "type": "textnode",
+                                    "content": "\n      "
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "link",
+                            "attributes": {
+                              "href": "https://www.youtube.com/@GersonLuisVertematti",
+                              "target": "_blank",
+                              "title": "YouTube"
+                            },
+                            "components": [
+                              {
+                                "tagName": "i",
+                                "type": "text",
+                                "classes": [
+                                  "fab",
+                                  "fa-youtube"
+                                ],
+                                "components": [
+                                  {
+                                    "type": "textnode",
+                                    "content": "\n      "
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "classes": [
+                          "footer-links"
+                        ],
+                        "components": [
+                          {
+                            "type": "link",
+                            "attributes": {
+                              "href": "https://gersonlv.com.br/gersonlv.com.br/index.php/documents.html",
+                              "target": "_blank"
+                            },
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "\n      Downloads\n    "
+                              }
+                            ]
+                          },
+                          {
+                            "type": "link",
+                            "attributes": {
+                              "href": "https://gersonlv.com.br/gersonlv.com.br/index.php/postagens.html",
+                              "target": "_blank"
+                            },
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "\n      Postagens\n    "
+                              }
+                            ]
+                          },
+                          {
+                            "type": "link",
+                            "attributes": {
+                              "href": "https://gersonlv.com.br/gersonlv.com.br/index.php/services.html",
+                              "target": "_blank"
+                            },
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "\n      Serviços\n    "
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tagName": "p",
+                        "type": "text",
+                        "attributes": {
+                          "id": "it2ho"
+                        },
+                        "components": [
+                          {
+                            "type": "textnode",
+                            "content": "\n    © 2025 Gerson Luis Vertematti — System Developer & Maker\n  "
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "comment",
+                    "content": " ── Botão Voltar ao Topo ────────────────────────────────────────────── "
+                  },
+                  {
+                    "tagName": "button",
+                    "attributes": {
+                      "id": "back-top",
+                      "title": "Voltar ao topo"
+                    },
+                    "components": [
+                      {
+                        "tagName": "i",
+                        "type": "text",
+                        "classes": [
+                          "fas",
+                          "fa-chevron-up"
+                        ],
+                        "components": [
+                          {
+                            "type": "textnode",
+                            "content": "\n  "
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "head": {
+                  "type": "head"
+                },
+                "docEl": {
+                  "tagName": "html"
+                }
+              },
+              "id": "g5OZKDaSJGXI0Vut"
+            }
+          ],
+          "type": "main",
+          "id": "lhbiRbRIMsN6DZOa"
+        }
+      ],
+      "symbols": []
+    },
+    "updatedAt": "2026-06-13T02:52:16.667Z"
+  }
+}

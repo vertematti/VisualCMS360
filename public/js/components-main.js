@@ -71,6 +71,10 @@
           storageManager: false,
           allowScripts:   1,
           plugins:        cfg.plugins,
+          canvas: {
+            scripts: [window.location.origin + '/vendor/jquery.min.js'],
+            styles:  [window.location.origin + '/vendor/fontawesome/css/all-canvas.css'],
+          },
           pluginsOpts: {
             'grapesjs-tailwind': {},
             'gjs-blocks-basic': { flexGrid: true }
@@ -199,6 +203,78 @@
       throw new Error('GrapesJS failed to initialize');
     }
 
+    // ═══════════════════════════════════════════════════════════════════════
+    // FIX ÍCONES FONT AWESOME
+    // Causa 1: o GrapesJS classifica <i class="fa..."> como TEXTO editável e
+    //          injeta textnodes de espaço/quebra ("\n      ") que reaparecem ao
+    //          salvar e podem deslocar a renderização do glifo.
+    // Causa 2: o CSS de dimensionamento (ex.: .social-links a { width:42px... })
+    //          às vezes não fica salvo no projectData, só no campo "css" bruto;
+    //          como o load usa loadProjectData(), esse CSS era ignorado e os
+    //          ícones apareciam minúsculos e sem o botão circular.
+    // ═══════════════════════════════════════════════════════════════════════
+    var FA_CLASS_RE = /(^|\s)(fa|fas|far|fab|fal|fad|fass|fasr|fa-solid|fa-regular|fa-brands|fa-light|fa-duotone|fa-thin|fa-sharp)(\s|$)/;
+
+    // 1) Tipo dedicado para ícones FA: não-editável e sem filhos de texto.
+    editor.DomComponents.addType('fa-icon', {
+      isComponent(el) {
+        if (el.tagName === 'I' && FA_CLASS_RE.test(el.className || '')) {
+          return { type: 'fa-icon' };
+        }
+      },
+      model: {
+        defaults: {
+          tagName:       'i',
+          editable:      false,   // impede virar campo de texto
+          droppable:     false,   // nada pode ser solto dentro
+          highlightable: true,
+          components:    '',       // nasce vazio (sem textnodes de espaço)
+        },
+        init() {
+          // Remove textnodes de espaço herdados de dados antigos
+          if (this.components().length) this.components('');
+        },
+      },
+    });
+
+    // 2) Sanitiza ícones já existentes na árvore: projectData salvo antigamente
+    //    guarda type:"text" + textnode "\n      ", que ignora o isComponent acima.
+    function healFaIcons(ed) {
+      try {
+        ed.getWrapper().find('i').forEach(function (cmp) {
+          var classStr = (cmp.getClasses() || []).join(' ');
+          if (!FA_CLASS_RE.test(' ' + classStr + ' ')) return;
+          if (cmp.components().length) cmp.components('');  // remove espaço/quebra
+          cmp.set('editable',  false);
+          cmp.set('droppable', false);
+        });
+      } catch (e) { console.warn('[CMS Comp] healFaIcons:', e.message); }
+    }
+
+    // 3) Carregamento unificado de componente:
+    //    projectData (vincula o Style Manager) + reaplicação do CSS bruto via
+    //    addRules (merge idempotente que recupera regras ausentes do projectData)
+    //    + cura dos ícones FA.
+    function loadComponentInto(ed, comp) {
+      if (comp && comp.projectData && comp.projectData.pages && comp.projectData.pages.length) {
+        ed.loadProjectData(comp.projectData);
+      } else {
+        ed.loadProjectData({
+          pages: [{
+            id: 'comp-page',
+            frames: [{ component: { type: 'wrapper', components: (comp && comp.html) || '' } }]
+          }],
+          styles: (comp && comp.css) || '',
+        });
+      }
+      if (comp && comp.css) {
+        var cssMod = ed.Css || ed.CssComposer;
+        if (cssMod && cssMod.addRules) {
+          try { cssMod.addRules(comp.css); } catch (e) { console.warn('[CMS Comp] addRules:', e.message); }
+        }
+      }
+      healFaIcons(ed);
+    }
 
       /* ── Formatadores de código para as textareas ──────────────────────────── */
       function formatHTML(html) {
@@ -296,6 +372,7 @@
           try {
             ed.setComponents(htmlArea.value);
             ed.setStyle(cssArea.value);
+            healFaIcons(ed);
             modal.close();
           } catch(err) {
             alert('Erro ao aplicar: ' + err.message);
@@ -686,14 +763,46 @@
           }
 
           // ── Syntax highlighters ────────────────────────────────────────────
+
           function highlightHTML(code) {
-            return code
-              .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-              .replace(/(&quot;[^&]*&quot;|'[^']*')/g,'<span style="color:#ce9178">$1</span>')
-              .replace(/(&lt;\/?)([\w-]+)/g,'$1<span style="color:#4ec9b0">$2</span>')
-              .replace(/\s([\w:-]+)=/g,' <span style="color:#9cdcfe">$1</span>=')
-              .replace(/(&lt;!--[\s\S]*?--&gt;)/g,'<span style="color:#6a9955">$1</span>');
+            // Escape primeiro
+            let out = code
+              .replace(/&/g,'&amp;')
+              .replace(/</g,'&lt;')
+              .replace(/>/g,'&gt;');
+
+            // Comentários HTML
+            out = out.replace(/(&lt;!--[\s\S]*?--&gt;)/g,
+              '<span style="color:#6a9955">$1</span>');
+
+            // Tags: colorir nome da tag sem afetar atributos já processados
+            // Processa cada "token" de tag completo de forma isolada
+            out = out.replace(/(&lt;\/?)([\w-]+)(\s[^&]*?)?(\/?&gt;)/g,
+              function(m, open, tag, attrs, close) {
+                let result = open + '<span style="color:#4ec9b0">' + tag + '</span>';
+                if (attrs) {
+                  // Colorir atributos: nome=valor
+                  let a = attrs
+                    .replace(/([\w:-]+)(=)/g,
+                      '<span style="color:#9cdcfe">$1</span>$2')
+                    .replace(/(=)(&quot;[^&]*?&quot;|'[^']*?')/g,
+                      '$1<span style="color:#ce9178">$2</span>');
+                  result += a;
+                }
+                result += (close || '');
+                return result;
+              });
+
+            // Tags de fechamento simples sem attrs já capturadas acima
+            out = out.replace(/(&lt;\/)([\w-]+)(&gt;)/g,
+              function(m, open, tag, close) {
+                if (m.includes('<span')) return m; // já processado
+                return open + '<span style="color:#4ec9b0">' + tag + '</span>' + close;
+              });
+
+            return out;
           }
+
           function highlightCSS(code) {
             return code
               .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
@@ -804,6 +913,7 @@
             if (js) html += '\n<script>\n' + js + '\n<\/script>';
             ed.setComponents(html);
             ed.setStyle(secCss._editor._ta.value);
+            healFaIcons(ed);
             ed.Modal.close();
           };
 
@@ -1300,12 +1410,8 @@
           const delBtn = document.getElementById('comp-delete-btn');
           if (delBtn) delBtn.style.display = 'inline-block';
           const comp = componentList[first];
-          if (comp.projectData?.pages?.length) {
-            editor.loadProjectData(comp.projectData);
-          } else {
-            editor.setComponents(comp.html || '');
-            editor.setStyle(comp.css   || '');
-          }
+          // Loader unificado: projectData + backfill de CSS + cura de ícones FA
+          loadComponentInto(editor, comp);
         }, 200);
       }
 
@@ -1323,15 +1429,9 @@
         currentComponent  = name;
         del.style.display = 'inline-block';
         const comp = componentList[name];
-        if (comp.projectData?.pages?.length) {
-          editor.loadProjectData(comp.projectData);
-        } else {
-          editor.setComponents(comp.html || '');
-          editor.setStyle(comp.css   || '');
-        }
+        loadComponentInto(editor, comp);
       });
 
-      // Save button
       document.getElementById('comp-save-btn').addEventListener('click', async () => {
         let name = currentComponent;
         if (!name) {
