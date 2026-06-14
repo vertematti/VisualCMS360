@@ -12,6 +12,17 @@ export default defineConfig({
     build: {
       target: 'es2020',   // permite async/await, for-of, spread, matchAll
     },
+    server: {
+      watch: {
+        // Ignorar arquivos de dados gravados em runtime pela API.
+        // Sem isso, salvar uma página dispara HMR/reload do Vite,
+        // causando a "piscada" e perda do toast de sucesso.
+        ignored: [
+          '**/src/data/**',
+          '**/public/uploads/**',
+        ],
+      },
+    },
   },
 
   adapter: node({

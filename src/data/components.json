@@ -507,13 +507,13 @@
       ],
       "symbols": []
     },
-    "updatedAt": "2026-06-13T06:25:35.448Z"
+    "updatedAt": "2026-06-14T01:05:59.020Z"
   },
   "rodapé": {
     "name": "rodapé",
-    "html": "<body id=\"ifwj\"><footer id=\"ia7gbw\"><div id=\"iph98\" class=\"social-links\"><a href=\"mailto:gersonlv@gmail.com\" title=\"E-mail\"><i class=\"fas fa-envelope\"></i></a><a href=\"https://www.instagram.com/gerson.vertematti/\" target=\"_blank\" title=\"Instagram\"><i class=\"fab fa-instagram\"></i></a><a href=\"https://www.linkedin.com/in/gersonlv/\" target=\"_blank\" title=\"LinkedIn\"><i class=\"fab fa-linkedin-in\"></i></a><a href=\"https://github.com/vertematti\" target=\"_blank\" title=\"GitHub\"><i class=\"fab fa-github\"></i></a><a href=\"https://www.youtube.com/@GersonLuisVertematti\" target=\"_blank\" title=\"YouTube\"><i class=\"fab fa-youtube\"></i></a></div><div class=\"footer-links\"><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/documents.html\" target=\"_blank\">\n      Downloads\n    </a><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/postagens.html\" target=\"_blank\">\n      Postagens\n    </a><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/services.html\" target=\"_blank\">\n      Serviços\n    </a></div><p id=\"it2ho\">\n    © 2025 Gerson Luis Vertematti — System Developer &amp; Maker\n  </p></footer><!-- ── Botão Voltar ao Topo ────────────────────────────────────────────── --><button id=\"back-top\" title=\"Voltar ao topo\"><i class=\"fas fa-chevron-up\"></i></button></body>",
+    "html": "<body id=\"ifwj\"><footer id=\"ia7gbw\"><div id=\"iph98\" class=\"social-links\"><a href=\"mailto:gersonlv@gmail.com\" title=\"E-mail\"><i class=\"fas fa-envelope\">\n      </i></a><a href=\"https://www.instagram.com/gerson.vertematti/\" target=\"_blank\" title=\"Instagram\"><i class=\"fab fa-instagram\">\n      </i></a><a href=\"https://www.linkedin.com/in/gersonlv/\" target=\"_blank\" title=\"LinkedIn\"><i class=\"fab fa-linkedin-in\">\n      </i></a><a href=\"https://github.com/vertematti\" target=\"_blank\" title=\"GitHub\"><i class=\"fab fa-github\">\n      </i></a><a href=\"https://www.youtube.com/@GersonLuisVertematti\" target=\"_blank\" title=\"YouTube\"><i class=\"fab fa-youtube\">\n      </i></a></div><div class=\"footer-links\"><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/documents.html\" target=\"_blank\">\n      Downloads\n    </a><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/postagens.html\" target=\"_blank\">\n      Postagens\n    </a><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/services.html\" target=\"_blank\">\n      Serviços\n    </a></div><p id=\"it2ho\">\n    © 2025 Gerson Luis Vertematti — System Developer &amp; Maker\n  </p></footer><!-- ── Botão Voltar ao Topo ────────────────────────────────────────────── --><button id=\"back-top\" title=\"Voltar ao topo\"><i class=\"fas fa-chevron-up\">\n  </i></button></body>",
     "js": "",
-    "css": "* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}footer{color:rgba(255, 255, 255, 0.65);text-align:center;padding-top:28px;padding-right:24px;padding-bottom:28px;padding-left:24px;font-size:0.85rem;}footer .footer-links{display:flex;justify-content:center;row-gap:20px;column-gap:20px;flex-wrap:wrap;margin-bottom:16px;}footer .footer-links a{color:rgba(255, 255, 255, 0.65);text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;transition-property:color;transition-duration:0.15s;transition-timing-function:ease;transition-delay:0s;transition-behavior:normal;}footer .footer-links a:hover{color:rgb(255, 255, 255);}footer #back-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;color:rgb(255, 255, 255);border-top-width:medium;border-top-style:none;border-top-color:currentcolor;border-right-width:medium;border-right-style:none;border-right-color:currentcolor;border-bottom-width:medium;border-bottom-style:none;border-bottom-color:currentcolor;border-left-width:medium;border-left-style:none;border-left-color:currentcolor;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-top-left-radius:50%;border-top-right-radius:50%;border-bottom-right-radius:50%;border-bottom-left-radius:50%;font-size:1.1rem;cursor:pointer;box-shadow:rgba(0, 0, 0, 0.2) 0px 4px 14px;opacity:0;transition-property:opacity;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-behavior:normal;z-index:50;}#back-top.show{opacity:1;}#ia7gbw{background-color:rgba(6,6,6,0.74);}\n.social-links { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:8px; }\n.social-links a {\n  width:42px; height:42px;\n  border-radius:50%;\n  background:rgba(255,255,255,0.12);\n  color:#fff;\n  display:flex; align-items:center; justify-content:center;\n  font-size:1rem;\n  text-decoration:none;\n  transition:background 0.2s, transform 0.2s;\n  border:1px solid rgba(255,255,255,0.2);\n}\n.social-links a:hover { background:var(--accent,#2d8cf0); transform:translateY(-3px); border-color:var(--accent,#2d8cf0); }\n",
+    "css": "* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}footer{color:rgba(255, 255, 255, 0.65);text-align:center;padding-top:28px;padding-right:24px;padding-bottom:28px;padding-left:24px;font-size:0.85rem;}footer .footer-links{display:flex;justify-content:center;row-gap:20px;column-gap:20px;flex-wrap:wrap;margin-bottom:16px;}footer .footer-links a{color:rgba(255, 255, 255, 0.65);text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;transition-property:color;transition-duration:0.15s;transition-timing-function:ease;transition-delay:0s;transition-behavior:normal;}footer .footer-links a:hover{color:rgb(255, 255, 255);}footer .social-links{margin-bottom:16px;}#back-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;color:rgb(255, 255, 255);border-top-width:medium;border-top-style:none;border-top-color:currentcolor;border-right-width:medium;border-right-style:none;border-right-color:currentcolor;border-bottom-width:medium;border-bottom-style:none;border-bottom-color:currentcolor;border-left-width:medium;border-left-style:none;border-left-color:currentcolor;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-top-left-radius:50%;border-top-right-radius:50%;border-bottom-right-radius:50%;border-bottom-left-radius:50%;font-size:1.1rem;cursor:pointer;box-shadow:rgba(0, 0, 0, 0.2) 0px 4px 14px;opacity:0;transition-property:opacity;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-behavior:normal;z-index:50;}#back-top.show{opacity:1;}#ia7gbw{background-color:rgba(6, 6, 6, 0.74);}footer #back-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;color:rgb(255, 255, 255);border-top-width:medium;border-top-style:none;border-top-color:currentcolor;border-right-width:medium;border-right-style:none;border-right-color:currentcolor;border-bottom-width:medium;border-bottom-style:none;border-bottom-color:currentcolor;border-left-width:medium;border-left-style:none;border-left-color:currentcolor;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-top-left-radius:50%;border-top-right-radius:50%;border-bottom-right-radius:50%;border-bottom-left-radius:50%;font-size:1.1rem;cursor:pointer;box-shadow:rgba(0, 0, 0, 0.2) 0px 4px 14px;opacity:0;transition-property:opacity;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-behavior:normal;z-index:50;}.social-links{display:flex;justify-content:center;row-gap:12px;column-gap:12px;flex-wrap:wrap;margin-top:8px;}.social-links a{width:42px;height:42px;border-top-left-radius:50%;border-top-right-radius:50%;border-bottom-right-radius:50%;border-bottom-left-radius:50%;background-color:rgba(255, 255, 255, 0.12);background-position-x:0%;background-position-y:0%;background-repeat:repeat;background-attachment:scroll;background-image:none;background-size:auto;background-origin:padding-box;background-clip:border-box;color:rgb(255, 255, 255);display:flex;align-items:center;justify-content:center;font-size:1rem;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;transition-property:background, transform;transition-duration:0.2s, 0.2s;transition-timing-function:ease, ease;transition-delay:0s, 0s;transition-behavior:normal, normal;border-top-width:1px;border-top-style:solid;border-top-color:rgba(255, 255, 255, 0.2);border-right-width:1px;border-right-style:solid;border-right-color:rgba(255, 255, 255, 0.2);border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:rgba(255, 255, 255, 0.2);border-left-width:1px;border-left-style:solid;border-left-color:rgba(255, 255, 255, 0.2);border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;}.social-links a:hover{transform:translateY(-3px);}",
     "projectData": {
       "dataSources": [],
       "assets": [
@@ -654,7 +654,122 @@
             "#ia7gbw"
           ],
           "style": {
-            "background-color": "rgba(6,6,6,0.74)"
+            "background-color": "rgba(6, 6, 6, 0.74)"
+          }
+        },
+        {
+          "selectors": [],
+          "selectorsAdd": "footer #back-top",
+          "style": {
+            "position": "fixed",
+            "bottom": "28px",
+            "right": "28px",
+            "width": "44px",
+            "height": "44px",
+            "color": "rgb(255, 255, 255)",
+            "border-top-width": "medium",
+            "border-top-style": "none",
+            "border-top-color": "currentcolor",
+            "border-right-width": "medium",
+            "border-right-style": "none",
+            "border-right-color": "currentcolor",
+            "border-bottom-width": "medium",
+            "border-bottom-style": "none",
+            "border-bottom-color": "currentcolor",
+            "border-left-width": "medium",
+            "border-left-style": "none",
+            "border-left-color": "currentcolor",
+            "border-image-outset": "0",
+            "border-image-repeat": "stretch",
+            "border-image-slice": "100%",
+            "border-image-source": "none",
+            "border-image-width": "1",
+            "border-top-left-radius": "50%",
+            "border-top-right-radius": "50%",
+            "border-bottom-right-radius": "50%",
+            "border-bottom-left-radius": "50%",
+            "font-size": "1.1rem",
+            "cursor": "pointer",
+            "box-shadow": "rgba(0, 0, 0, 0.2) 0px 4px 14px",
+            "opacity": "0",
+            "transition-property": "opacity",
+            "transition-duration": "0.3s",
+            "transition-timing-function": "ease",
+            "transition-delay": "0s",
+            "transition-behavior": "normal",
+            "z-index": "50"
+          }
+        },
+        {
+          "selectors": [
+            "social-links"
+          ],
+          "style": {
+            "display": "flex",
+            "justify-content": "center",
+            "row-gap": "12px",
+            "column-gap": "12px",
+            "flex-wrap": "wrap",
+            "margin-top": "8px"
+          }
+        },
+        {
+          "selectors": [],
+          "selectorsAdd": ".social-links a",
+          "style": {
+            "width": "42px",
+            "height": "42px",
+            "border-top-left-radius": "50%",
+            "border-top-right-radius": "50%",
+            "border-bottom-right-radius": "50%",
+            "border-bottom-left-radius": "50%",
+            "background-color": "rgba(255, 255, 255, 0.12)",
+            "background-position-x": "0%",
+            "background-position-y": "0%",
+            "background-repeat": "repeat",
+            "background-attachment": "scroll",
+            "background-image": "none",
+            "background-size": "auto",
+            "background-origin": "padding-box",
+            "background-clip": "border-box",
+            "color": "rgb(255, 255, 255)",
+            "display": "flex",
+            "align-items": "center",
+            "justify-content": "center",
+            "font-size": "1rem",
+            "text-decoration-color": "currentcolor",
+            "text-decoration-line": "none",
+            "text-decoration-style": "solid",
+            "text-decoration-thickness": "auto",
+            "transition-property": "background, transform",
+            "transition-duration": "0.2s, 0.2s",
+            "transition-timing-function": "ease, ease",
+            "transition-delay": "0s, 0s",
+            "transition-behavior": "normal, normal",
+            "border-top-width": "1px",
+            "border-top-style": "solid",
+            "border-top-color": "rgba(255, 255, 255, 0.2)",
+            "border-right-width": "1px",
+            "border-right-style": "solid",
+            "border-right-color": "rgba(255, 255, 255, 0.2)",
+            "border-bottom-width": "1px",
+            "border-bottom-style": "solid",
+            "border-bottom-color": "rgba(255, 255, 255, 0.2)",
+            "border-left-width": "1px",
+            "border-left-style": "solid",
+            "border-left-color": "rgba(255, 255, 255, 0.2)",
+            "border-image-outset": "0",
+            "border-image-repeat": "stretch",
+            "border-image-slice": "100%",
+            "border-image-source": "none",
+            "border-image-width": "1"
+          }
+        },
+        {
+          "selectors": [],
+          "selectorsAdd": ".social-links a:hover",
+          "style": {
+            "transform": "translateY(-3px)"
           }
         }
       ],
@@ -917,6 +1032,6 @@
       ],
       "symbols": []
     },
-    "updatedAt": "2026-06-13T02:52:16.667Z"
+    "updatedAt": "2026-06-14T01:06:06.989Z"
   }
 }
