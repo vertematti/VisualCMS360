@@ -2531,6 +2531,15 @@
           name: 'Componente Vinculado',
           droppable: false,
           editable: false,
+          // O wrapper em si DEVE ser selecionável/movível/removível, para que o
+          // usuário possa selecioná-lo no canvas e excluir ou reposicionar.
+          // (Os filhos continuam travados via lockComponent.)
+          selectable: true,
+          hoverable: true,
+          draggable: true,
+          removable: true,
+          copyable: true,
+          layerable: true,
           traits: [
             { type: 'text', name: 'data-component-id', label: 'ID', attributes: { readonly: true } }
           ]
@@ -4350,6 +4359,64 @@
         doRemove();
         editor.on('load', doRemove);
       }());
+
+    // ── Correção do position:sticky/fixed dentro de componentes no canvas ──────
+    // O wrapper [data-component-id] vira uma caixa com a altura do componente,
+    // prendendo o sticky/fixed dos filhos (ex.: #navbar) a essa altura. No site
+    // publicado isso é resolvido com `[data-component-id]{display:contents}`.
+    //
+    // Porém `display:contents` remove a caixa do wrapper, e sem caixa o GrapesJS
+    // não consegue desenhar o overlay de seleção nem capturar o clique — o que
+    // impediria selecionar/mover/excluir o componente. Solução: a regra base
+    // mantém display:contents (sticky OK); quando o componente é apontado pelo
+    // mouse OU está selecionado, devolvemos temporariamente uma caixa
+    // (display:block) via a classe `.cms-comp-boxed`, restaurando a seleção.
+    function injectCanvasComponentFix() {
+      try {
+        const doc = editor.Canvas.getDocument();
+        if (!doc || !doc.head) return;
+        if (doc.getElementById('cms-canvas-component-fix')) return;
+        const st = doc.createElement('style');
+        st.id = 'cms-canvas-component-fix';
+        st.textContent =
+          '[data-component-id]{display:contents;}' +
+          '[data-component-id].cms-comp-boxed{display:block;}';
+        doc.head.appendChild(st);
+      } catch (e) { /* canvas ainda não pronto */ }
+    }
+    editor.on('canvas:frame:load:body', injectCanvasComponentFix);
+    editor.on('load', injectCanvasComponentFix);
+
+    // Devolve a caixa (display:block) ao wrapper enquanto ele está sob o mouse
+    // ou selecionado, para que possa ser selecionado/movido/excluído no canvas.
+    let _hoverBoxed = null;   // wrapper atualmente "caixado" por hover
+    function boxComponentEl(comp, on) {
+      try {
+        if (!comp || !comp.getAttributes || !comp.getAttributes()['data-component-id']) return false;
+        const el = comp.getEl && comp.getEl();
+        if (!el) return false;
+        el.classList.toggle('cms-comp-boxed', !!on);
+        // Recalcular posição dos overlays do GrapesJS após mudar o display
+        editor.trigger('frame:updated');
+        return true;
+      } catch (e) { return false; }
+    }
+    // Hover: ao apontar um componente, devolve a caixa a ele e remove do anterior
+    // (a menos que o anterior esteja selecionado).
+    editor.on('component:hover', (comp) => {
+      const sel = editor.getSelected();
+      if (_hoverBoxed && _hoverBoxed !== comp && _hoverBoxed !== sel) {
+        boxComponentEl(_hoverBoxed, false);
+        _hoverBoxed = null;
+      }
+      if (boxComponentEl(comp, true)) _hoverBoxed = comp;
+    });
+    // Seleção: mantém a caixa enquanto selecionado; remove ao desselecionar
+    editor.on('component:selected', (comp) => boxComponentEl(comp, true));
+    editor.on('component:deselected', (comp) => {
+      // só remove a caixa se o mouse também já não estiver sobre ele
+      if (_hoverBoxed !== comp) boxComponentEl(comp, false);
+    });
 
     editor.on('load', async () => {
       // Load pages and components
