@@ -3260,7 +3260,13 @@
           #cms-about-panel {
             display: none;
             position: absolute;
-            inset: 0;
+            /* topo abaixo da barra de ferramentas (ajustado via JS conforme a
+               altura real da toolbar, que pode quebrar em telas estreitas).
+               42px é o fallback padrão do GrapesJS antes do JS sincronizar. */
+            top: 42px;
+            left: 0;
+            right: 0;
+            bottom: 0;
             overflow-y: auto;
             background: #232435;
             z-index: 10;
@@ -3340,9 +3346,22 @@
         var panel = document.createElement('div');
         panel.id = 'cms-about-panel';
         panel.innerHTML = `
+          <label id="cms-about-hide-row" style="display:flex;align-items:center;gap:8px;justify-content:center;padding:2px 12px 14px;font-size:12px;color:#94a3b8;cursor:pointer;user-select:none;">
+            <input type="checkbox" id="cms-about-hide-startup" style="width:15px;height:15px;cursor:pointer;accent-color:#a78bfa;margin:0;">
+            <span>Não exibir na inicialização</span>
+          </label>
+
           <div id="cms-about-logo-wrap">
             <img src="/VisualCMS360header.png" alt="Visual CMS 360°">
           </div>
+
+          <div style="text-align:center;padding:0 12px 4px;">
+            <p style="margin:0 0 8px;font-size:12.5px;line-height:1.5;color:#cbd5e1;">Editor CMS local para criação de sites estáticos com tours virtuais 360°, galerias de fotos e edição visual drag-and-drop.</p>
+            <p style="margin:0 0 8px;font-size:12px;color:#94a3b8;"><strong style="color:#cbd5e1;">Versão:</strong> 1.0.1</p>
+            <p style="margin:0 0 8px;font-size:12px;color:#94a3b8;"><strong style="color:#cbd5e1;">Data de compilação:</strong> 2026-06-16</p>
+          </div>
+
+          <hr class="cms-about-divider">
 
           <div class="cms-about-section">
             <div style="text-align:center;margin-bottom:8px;">
@@ -3399,6 +3418,36 @@
 
         `;
         container.appendChild(panel);
+
+        // Alinha o topo do painel logo abaixo da barra de ferramentas. A toolbar
+        // pode ter altura variável (quebra de linha em telas estreitas); sem este
+        // ajuste o primeiro item do painel (o checkbox "Não exibir na
+        // inicialização") fica oculto atrás da toolbar.
+        try {
+          var cmdsBar = document.querySelector('.gjs-pn-commands');
+          if (cmdsBar) panel.style.top = cmdsBar.offsetHeight + 'px';
+        } catch (e) {}
+
+        // Checkbox "Não exibir na inicialização" — persistência via localStorage.
+        // Chave compartilhada entre os dois editores para comportamento uniforme.
+        try {
+          var hideChk = panel.querySelector('#cms-about-hide-startup');
+          if (hideChk) {
+            hideChk.checked = (localStorage.getItem('vcms360_hide_about') === '1');
+            hideChk.addEventListener('change', function() {
+              try {
+                if (hideChk.checked) localStorage.setItem('vcms360_hide_about', '1');
+                else localStorage.removeItem('vcms360_hide_about');
+              } catch (e) {}
+            });
+          }
+        } catch (e) {}
+      }
+
+      // Lê a preferência persistida de ocultar o Sobre na inicialização.
+      function aboutHiddenOnStartup() {
+        try { return localStorage.getItem('vcms360_hide_about') === '1'; }
+        catch (e) { return false; }
       }
 
       // Comando togglable: run = abrir painel, stop = fechar
@@ -3418,9 +3467,11 @@
         }
       });
 
-      // Abre o painel Sobre por padrão ao carregar o editor de páginas
+      // Abre o painel Sobre por padrão ao carregar o editor de páginas,
+      // a menos que o usuário tenha marcado "Não exibir na inicialização".
       editor.on('load', function() {
         buildAboutPanel();
+        if (aboutHiddenOnStartup()) return;
         setTimeout(function() {
           editor.runCommand('cms-open-about');
         }, 300);
@@ -4380,7 +4431,12 @@
         st.id = 'cms-canvas-component-fix';
         st.textContent =
           '[data-component-id]{display:contents;}' +
-          '[data-component-id].cms-comp-boxed{display:block;}';
+          '[data-component-id].cms-comp-boxed{display:block;}' +
+          // Mesma correção responsiva do grid aplicada no site publicado: em
+          // telas estreitas o GrapesJS troca .gjs-cell para block mas mantém a
+          // altura fixa (75px) e a linha em display:table, fazendo o conteúdo
+          // transbordar e o rodapé subir. Resetamos altura/linha aqui também.
+          '@media (max-width:768px){.gjs-row{display:block;}.gjs-cell{height:auto;}}';
         doc.head.appendChild(st);
       } catch (e) { /* canvas ainda não pronto */ }
     }
@@ -4975,6 +5031,10 @@
           var h = commands.offsetHeight;
           canvas.style.top = h + 'px';
           if (viewsContainer) viewsContainer.style.paddingTop = h + 'px';
+          // Mantém o topo do painel "Sobre" alinhado abaixo da toolbar, para
+          // que o primeiro item (checkbox) não fique escondido atrás dela.
+          var aboutPanel = document.getElementById('cms-about-panel');
+          if (aboutPanel) aboutPanel.style.top = h + 'px';
         }
 
         var ro = new ResizeObserver(syncCanvasTop);

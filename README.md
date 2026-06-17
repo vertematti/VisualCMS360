@@ -7,6 +7,10 @@
 </p>
 
 <p align="center">
+  <strong>Versão:</strong> 1.0.1 · <strong>Data de compilação:</strong> 2026-06-16
+</p>
+
+<p align="center">
   <a href="https://gersonlv.com.br/visual_cms_360">Documentação</a> ·
   <a href="https://github.com/vertematti/VisualCMS360">GitHub</a> ·
   <a href="mailto:gersonlv@gmail.com">Contato</a>
@@ -112,7 +116,7 @@ O exportador **não reimplementa** a renderização. Ele sobe internamente o ser
 
 ### O que é incluído e excluído
 
-O site estático inclui todo o conteúdo de `dist/client` e `public/` (suas páginas, uploads, e bibliotecas de `vendor/`). São **excluídos** automaticamente os recursos que pertencem apenas à interface do editor: a rota `/editor`, os scripts do editor em `js/` (`editor-main.js` e `components-main.js`, que as páginas publicadas nunca carregam), e as imagens `glv.png`, `openmaker.png` e `VisualCMS360header.png`.
+O site estático inclui todo o conteúdo de `dist/client` e `public/` (suas páginas, uploads, e bibliotecas de `vendor/`). Os **favicons** (`favicon.ico` e `favicon.svg`) também são propagados e já vêm referenciados no `<head>` de cada página publicada (`<link rel="icon">`), com o `.svg` como ícone vetorial preferencial e o `.ico` como fallback universal. São **excluídos** automaticamente os recursos que pertencem apenas à interface do editor: a rota `/editor`, os scripts do editor em `js/` (`editor-main.js` e `components-main.js`, que as páginas publicadas nunca carregam), e as imagens `glv.png`, `openmaker.png` e `VisualCMS360header.png`.
 
 Quando o **domínio base** está configurado em SEO → Configurações do Site, o exportador também gera **`sitemap.xml`** e **`robots.txt`** na raiz do site estático.
 

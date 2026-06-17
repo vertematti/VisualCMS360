@@ -2,6 +2,8 @@
 // Visual CMS 360° — Copyright (C) 2025 Gerson Luis Vertematti
 // GNU GPL v3 — https://www.gnu.org/licenses/gpl-3.0.html
 // Editor de Componentes standalone — não usa Layout para evitar conflito com Tailwind global
+// Cache-busting: muda a cada build (SSR) para o navegador sempre pegar o JS novo.
+const assetV = Date.now();
 ---
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -9,6 +11,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Visual CMS — Editor de Componentes</title>
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="stylesheet" href="/vendor/grapes.min.css" />
   <link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css" />
   <style>
@@ -140,7 +144,7 @@
   <script is:inline src="/vendor/grapesjs-blocks-basic.min.js"></script>
 
   <script is:inline src="/vendor/jquery.min.js"></script>
-  <script is:inline src="/js/components-main.js"></script>
+  <script is:inline src={`/js/components-main.js?v=${assetV}`}></script>
 
 </body>
 </html>

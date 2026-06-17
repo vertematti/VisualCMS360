@@ -111,6 +111,20 @@ const seo = resolveSeo(pageData.seo || {}, siteConfig, slug);
   <style is:global>
     [data-component-id] { display: contents; }
   </style>
+
+  <!-- Correção responsiva do grid do GrapesJS (.gjs-row / .gjs-cell):
+       No layout padrão a linha é display:table e cada célula tem height:75px
+       fixo. Em telas estreitas (<=768px) o GrapesJS troca a célula para
+       display:block mas NÃO reseta a altura fixa nem o display:table da linha,
+       fazendo o conteúdo transbordar de uma "tabela" de altura travada e o
+       rodapé subir, sobrepondo a página. Aqui resetamos a altura da célula e
+       tornamos a linha um bloco fluido, devolvendo o fluxo normal. -->
+  <style is:global>
+    @media (max-width: 768px) {
+      .gjs-row { display: block; }
+      .gjs-cell { height: auto; }
+    }
+  </style>
   
   <!-- Page HTML from GrapesJS -->
   <Fragment set:html={finalHtml} />
