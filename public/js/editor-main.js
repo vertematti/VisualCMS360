@@ -59,7 +59,10 @@
             'gjs-blocks-basic': { flexGrid: true }
           },
           assetManager: {
-            assets: '/api/assets/load',
+            // assets vazio: o array real é carregado via fetch em editor.on('load').
+            // (passar a URL como string fazia o GrapesJS criar um asset fantasma "load"
+            //  e não carregava as imagens já enviadas)
+            assets: [],
             upload: '/api/assets/upload',
             uploadName: 'files[]',
           },
@@ -142,8 +145,17 @@
                 name: 'Decorações',
                 open: false,
                 properties: [
-                  { name: 'Cor de fundo',  property: 'background-color', type: 'color' },
-                  { name: 'Background',    property: 'background',        type: 'text' },
+                  { name: 'Cor de fundo',    property: 'background-color', type: 'color' },
+                  { name: 'Imagem de fundo', property: 'background-image', type: 'file', functionName: 'url', full: true },
+                  { name: 'Tam. imagem',     property: 'background-size', type: 'select',
+                    options: [{value:'auto'},{value:'cover'},{value:'contain'},{value:'100% 100%'}] },
+                  { name: 'Posição img.',    property: 'background-position', type: 'select',
+                    options: [{value:'center center'},{value:'left top'},{value:'center top'},{value:'right top'},{value:'left center'},{value:'right center'},{value:'left bottom'},{value:'center bottom'},{value:'right bottom'}] },
+                  { name: 'Repetir img.',    property: 'background-repeat', type: 'select',
+                    options: [{value:'no-repeat'},{value:'repeat'},{value:'repeat-x'},{value:'repeat-y'},{value:'space'},{value:'round'}] },
+                  { name: 'Fixação img.',    property: 'background-attachment', type: 'select',
+                    options: [{value:'scroll'},{value:'fixed'},{value:'local'}] },
+                  { name: 'Background (CSS)', property: 'background',        type: 'text' },
                   { name: 'Borda',         property: 'border',            type: 'text' },
                   { name: 'Borda raio',    property: 'border-radius',     type: 'integer', units: ['px','%','em'] },
                   { name: 'Sombra caixa',  property: 'box-shadow',        type: 'text' },
@@ -4436,12 +4448,91 @@
           // telas estreitas o GrapesJS troca .gjs-cell para block mas mantém a
           // altura fixa (75px) e a linha em display:table, fazendo o conteúdo
           // transbordar e o rodapé subir. Resetamos altura/linha aqui também.
-          '@media (max-width:768px){.gjs-row{display:block;}.gjs-cell{height:auto;}}';
+          '@media (max-width:768px){.gjs-row{display:block;}.gjs-cell{height:auto;}}' +
+          // Utilitário de blur dinâmico de fundo (mesmo CSS de global.css) para
+          // que o efeito apareça no canvas durante a edição.
+          '.cms-bg-blur,.cms-bg-blur-soft,.cms-bg-blur-strong{position:relative;overflow:hidden;}' +
+          '.cms-bg-blur::before,.cms-bg-blur-soft::before,.cms-bg-blur-strong::before{content:"";position:absolute;inset:0;background:inherit;background-size:cover;background-position:center;background-repeat:no-repeat;transform:scale(1.12);z-index:0;}' +
+          '.cms-bg-blur::after,.cms-bg-blur-soft::after,.cms-bg-blur-strong::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;}' +
+          '.cms-bg-blur>*,.cms-bg-blur-soft>*,.cms-bg-blur-strong>*{position:relative;z-index:2;}' +
+          '.cms-bg-blur::before{filter:blur(8px);}.cms-bg-blur::after{background:rgba(0,0,0,0.45);}' +
+          '.cms-bg-blur-soft::before{filter:blur(4px);}.cms-bg-blur-soft::after{background:rgba(0,0,0,0.32);}' +
+          '.cms-bg-blur-strong::before{filter:blur(14px);}.cms-bg-blur-strong::after{background:rgba(0,0,0,0.6);}';
         doc.head.appendChild(st);
       } catch (e) { /* canvas ainda não pronto */ }
     }
     editor.on('canvas:frame:load:body', injectCanvasComponentFix);
     editor.on('load', injectCanvasComponentFix);
+
+    // Injeta uma tag <base> no <head> do canvas. O iframe do canvas é about:blank,
+    // então caminhos root-relative (ex.: /uploads/imagem.jpg) não resolvem para um
+    // host válido dentro dele — por isso a imagem de fundo selecionada não aparecia
+    // no canvas (embora resolvesse no documento pai, daí o preview funcionar). Com a
+    // <base> apontando para a origem, esses caminhos passam a resolver corretamente.
+    // Não altera o HTML/CSS salvo (continua com caminho relativo e portável).
+    function injectCanvasBase() {
+      try {
+        const doc = editor.Canvas.getDocument();
+        if (!doc || !doc.head) return;
+        if (doc.getElementById('cms-canvas-base')) return;
+        const base = doc.createElement('base');
+        base.id = 'cms-canvas-base';
+        base.setAttribute('href', window.location.origin + '/');
+        doc.head.insertBefore(base, doc.head.firstChild);
+      } catch (e) { /* canvas ainda não pronto */ }
+    }
+    editor.on('canvas:frame:load:head', injectCanvasBase);
+    editor.on('canvas:frame:load', injectCanvasBase);
+    editor.on('load', injectCanvasBase);
+
+    // Ao escolher a imagem no Asset Manager, o GrapesJS define o background-image,
+    // mas o canvas às vezes não repinta a regra na hora (a imagem só aparecia depois
+    // de mexer em outra propriedade, ex.: "Tam. imagem"). Quando o Asset Manager
+    // fecha, forçamos a reemissão da regra do componente selecionado: alternamos
+    // background-image para 'none' e de volta ao valor (em frames separados), o que
+    // faz o GrapesJS reescrever a regra e o canvas repintar imediatamente. O valor
+    // final salvo continua o mesmo.
+    let _bgImgFixing = false;
+    editor.on('asset:close', () => {
+      if (_bgImgFixing) return;
+      // Defere 1 frame para garantir que o StyleManager já propagou o valor ao
+      // componente antes de lermos/forçarmos o repaint.
+      requestAnimationFrame(() => {
+        try {
+          const c = editor.getSelected();
+          if (!c || !c.getStyle || !c.addStyle) return;
+          const bi = (c.getStyle() || {})['background-image'];
+          if (!bi || bi === 'none') return;
+          _bgImgFixing = true;
+          c.addStyle({ 'background-image': 'none' });
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            try { c.addStyle({ 'background-image': bi }); } catch (e) {}
+            _bgImgFixing = false;
+          }));
+        } catch (e) { _bgImgFixing = false; }
+      });
+    });
+
+    // Ao escolher uma imagem no gerenciador pela propriedade "Imagem de fundo", o
+    // GrapesJS comita o valor mas nem sempre repinta o canvas até a próxima
+    // alteração de estilo (por isso ela só aparecia ao mexer em "Tam. imagem").
+    // Quando o gerenciador fecha, forçamos a reescrita da regra background-image
+    // (none -> url) no componente selecionado, fazendo a imagem aparecer na hora.
+    var _cmsBgNudging = false;
+    function cmsForceBgRepaint() {
+      if (_cmsBgNudging) return;
+      try {
+        var cmp = editor.getSelected();
+        if (!cmp || !cmp.getStyle) return;
+        var sty = cmp.getStyle();
+        var bg = sty && sty['background-image'];
+        if (!bg || bg === 'none') return;
+        _cmsBgNudging = true;
+        cmp.setStyle(Object.assign({}, sty, { 'background-image': 'none' }));
+        cmp.setStyle(Object.assign({}, sty, { 'background-image': bg }));
+      } catch (e) {} finally { _cmsBgNudging = false; }
+    }
+    editor.on('asset:close', function() { setTimeout(cmsForceBgRepaint, 0); });
 
     // Devolve a caixa (display:block) ao wrapper enquanto ele está sob o mouse
     // ou selecionado, para que possa ser selecionado/movido/excluído no canvas.
@@ -4475,10 +4566,37 @@
     });
 
     editor.on('load', async () => {
+      // Proteção: descarta qualquer asset "fantasma" cujo src aponte para a API
+      // (ex.: "/api/assets/load" gravado por engano em projectData de versões
+      // antigas). Garante que só imagens reais fiquem no gerenciador.
+      editor.on('asset:add', (asset) => {
+        try {
+          const s = String(asset && asset.get ? asset.get('src') : '');
+          if (s.indexOf('/api/') !== -1) {
+            setTimeout(() => { try { editor.AssetManager.remove(asset); } catch (e) {} }, 0);
+          }
+        } catch (e) {}
+      });
+
       // Load pages and components
       await loadPage(currentSlug);
       await loadComponentBlocks();
       updateUI();
+
+      // Sincroniza o Asset Manager com as imagens reais do servidor (public/uploads),
+      // DEPOIS de carregar o projectData. O reset + add deixa a lista igual à pasta
+      // de uploads, removendo qualquer fantasma/duplicata restaurada do projectData.
+      try {
+        const r = await fetch('/api/assets/load');
+        if (r.ok) {
+          const list = await r.json();
+          if (Array.isArray(list)) {
+            editor.AssetManager.getAll().reset();
+            const real = list.filter(a => a && a.src && String(a.src).indexOf('/api/') === -1);
+            if (real.length) editor.AssetManager.add(real);
+          }
+        }
+      } catch (e) { console.warn('Falha ao carregar assets:', e); }
 
       // ── Logo: injeta no painel devices-c (esquerda nativa do GrapesJS) ────
       var _doInjectLogo;

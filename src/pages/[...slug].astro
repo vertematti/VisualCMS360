@@ -65,6 +65,17 @@ if (finalHtml) {
   } else {
     finalHtml = $.html();
   }
+
+  // Remover quaisquer <script> embutidos no HTML renderizado.
+  // O JS/jQuery da página e dos componentes já é agregado e injetado UMA
+  // única vez no bloco combinedScript abaixo. Ao aplicar código no editor,
+  // o canvas recebe um <script> embutido no HTML (para o efeito rodar durante
+  // a edição) — se esse mesmo <script> também fosse para a página publicada,
+  // os handlers seriam vinculados DUAS vezes (uma pelo <script> embutido, outra
+  // pelo combinedScript). No menu hamburger isso fazia toggleClass('open')
+  // disparar 2x por clique, anulando o efeito (menu nunca abria no preview/site).
+  // Removendo os <script> do HTML, o código roda só pelo combinedScript (1x).
+  finalHtml = finalHtml.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '');
 }
 
 // Adicionar JS e jQuery próprios da página (se existirem)

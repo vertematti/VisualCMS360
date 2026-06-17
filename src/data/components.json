@@ -1,21 +1,13 @@
 {
   "cabeçalho": {
     "name": "cabeçalho",
-    "html": "<body id=\"ifwj\"><nav id=\"navbar\"><div class=\"nav-inner\"><a href=\"#hero\" class=\"logo-text\">OPEN MAKER</a><button id=\"hamburger\" aria-label=\"Menu\"><i class=\"fas fa-bars\"></i></button><ul id=\"nav-links\"><li id=\"if631\"><a href=\"#sobre\" id=\"i8vav\">Início</a></li><li id=\"irgca\"><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/professional-skills.html\" target=\"_blank\" id=\"i1dg8\">Quem Somos</a></li><li><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/maker-skills.html\" target=\"_blank\" id=\"ieabr\">Conteúdos gratuítos</a></li><li id=\"iiixe\"><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/services.html\" target=\"_blank\" id=\"i120i\">Agendas e contatos</a></li><li id=\"ihpqq\"><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/systems.html\" target=\"_blank\" id=\"itqcm\">Tecnologia</a></li><li><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/maker-projects.html\" target=\"_blank\" id=\"i4zsw\">Doação</a></li><li></li><li><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/postagens.html\" target=\"_blank\" id=\"ihhcj\">Mais</a></li></ul></div></nav></body>",
+    "html": "<body id=\"ifwj\"><nav id=\"navbar\"><div class=\"nav-inner\"><a href=\"#hero\" class=\"logo-text whitespace-nowrap\">OPEN MAKER</a><button id=\"hamburger\" aria-label=\"Menu\"><i class=\"fas fa-bars\"></i></button><ul id=\"nav-links\"><li id=\"if631\"><a href=\"#sobre\" id=\"i8vav\">Início</a></li><li id=\"irgca\"><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/professional-skills.html\" target=\"_blank\" id=\"i1dg8\" class=\"whitespace-nowrap\">Quem Somos</a></li><li class=\"whitespace-nowrap\" id=\"icwqf\"><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/maker-skills.html\" target=\"_blank\" id=\"ieabr\">Conteúdos gratuítos</a></li><li id=\"iiixe\"><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/services.html\" target=\"_blank\" id=\"i120i\" class=\"whitespace-nowrap\">Agendas e contatos</a></li><li id=\"ihpqq\"><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/systems.html\" target=\"_blank\" id=\"itqcm\">Tecnologia</a></li><li><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/maker-projects.html\" target=\"_blank\" id=\"i4zsw\">Doação</a></li><li></li><li><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/postagens.html\" target=\"_blank\" id=\"ihhcj\">Mais</a></li></ul></div></nav></body>",
     "js": "",
     "jquery": "",
     "css": "* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}#navbar{position:sticky;top:0px;z-index:100;background-color:rgba(6, 6, 6, 0.74);}#navbar .nav-inner{max-width:1200px;margin-top:0px;margin-right:auto;margin-bottom:0px;margin-left:auto;padding-top:0px;padding-right:24px;padding-bottom:0px;padding-left:24px;display:flex;align-items:center;justify-content:space-between;height:64px;}#navbar .logo-text{color:rgb(255, 255, 255);font-size:1.25rem;font-weight:700;letter-spacing:0.02em;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;display:flex;align-items:center;row-gap:10px;column-gap:10px;}#navbar .logo-text i{color:var(--accent);font-size:1.4rem;}#nav-links{display:flex;row-gap:4px;column-gap:4px;list-style-position:outside;list-style-image:none;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}#nav-links a{color:rgba(255, 255, 255, 0.82);text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;font-size:0.875rem;font-weight:500;padding-top:6px;padding-right:12px;padding-bottom:6px;padding-left:12px;border-top-left-radius:6px;border-top-right-radius:6px;border-bottom-right-radius:6px;border-bottom-left-radius:6px;transition-property:background, color;transition-duration:0.15s, 0.15s;transition-timing-function:ease, ease;transition-delay:0s, 0s;transition-behavior:normal, normal;}#nav-links a:hover{background-color:rgba(255, 255, 255, 0.12);background-position-x:0%;background-position-y:0%;background-repeat:repeat;background-attachment:scroll;background-image:none;background-size:auto;background-origin:padding-box;background-clip:border-box;color:rgb(255, 255, 255);}#hamburger{display:none;background-color:rgba(0, 0, 0, 0);background-position-x:0%;background-position-y:0%;background-repeat:repeat;background-attachment:scroll;background-image:none;background-size:auto;background-origin:padding-box;background-clip:border-box;border-top-width:medium;border-top-style:none;border-top-color:currentcolor;border-right-width:medium;border-right-style:none;border-right-color:currentcolor;border-bottom-width:medium;border-bottom-style:none;border-bottom-color:currentcolor;border-left-width:medium;border-left-style:none;border-left-color:currentcolor;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;color:rgb(255, 255, 255);font-size:1.4rem;cursor:pointer;padding-top:6px;padding-right:6px;padding-bottom:6px;padding-left:6px;}.nav-inner{position:sticky;z-index:1000;background-color:rgba(0, 0, 0, 0);}@media (max-width: 768px){#hamburger{display:block;}#nav-links{background-color:rgba(6, 6, 6, 0.74);display:none;flex-direction:column;position:absolute;top:64px;left:0px;right:0px;padding-top:12px;padding-right:16px;padding-bottom:20px;padding-left:16px;row-gap:2px;column-gap:2px;box-shadow:rgba(0, 0, 0, 0.3) 0px 8px 16px;}#nav-links.open{display:flex;}}",
     "projectData": {
       "dataSources": [],
-      "assets": [
-        {
-          "type": "image",
-          "src": "/api/assets/load",
-          "unitDim": "px",
-          "height": 0,
-          "width": 0
-        }
-      ],
+      "assets": [],
       "styles": [
         {
           "selectors": [],
@@ -297,7 +289,8 @@
                           {
                             "type": "link",
                             "classes": [
-                              "logo-text"
+                              "logo-text",
+                              "whitespace-nowrap"
                             ],
                             "attributes": {
                               "href": "#hero"
@@ -360,6 +353,9 @@
                                 "components": [
                                   {
                                     "type": "link",
+                                    "classes": [
+                                      "whitespace-nowrap"
+                                    ],
                                     "attributes": {
                                       "href": "https://gersonlv.com.br/gersonlv.com.br/index.php/professional-skills.html",
                                       "target": "_blank",
@@ -376,6 +372,12 @@
                               },
                               {
                                 "tagName": "li",
+                                "classes": [
+                                  "whitespace-nowrap"
+                                ],
+                                "attributes": {
+                                  "id": "icwqf"
+                                },
                                 "components": [
                                   {
                                     "type": "link",
@@ -401,6 +403,9 @@
                                 "components": [
                                   {
                                     "type": "link",
+                                    "classes": [
+                                      "whitespace-nowrap"
+                                    ],
                                     "attributes": {
                                       "href": "https://gersonlv.com.br/gersonlv.com.br/index.php/services.html",
                                       "target": "_blank",
@@ -501,7 +506,7 @@
       ],
       "symbols": []
     },
-    "updatedAt": "2026-06-16T11:52:34.492Z"
+    "updatedAt": "2026-06-17T01:28:36.162Z"
   },
   "rodapé": {
     "name": "rodapé",
@@ -510,15 +515,7 @@
     "css": "* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}footer{color:rgba(255, 255, 255, 0.65);text-align:center;padding-top:28px;padding-right:24px;padding-bottom:28px;padding-left:24px;font-size:0.85rem;}footer .footer-links{display:flex;justify-content:center;row-gap:20px;column-gap:20px;flex-wrap:wrap;margin-bottom:16px;}footer .footer-links a{color:rgba(255, 255, 255, 0.65);text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;transition-property:color;transition-duration:0.15s;transition-timing-function:ease;transition-delay:0s;transition-behavior:normal;}footer .footer-links a:hover{color:rgb(255, 255, 255);}footer .social-links{margin-bottom:16px;}#back-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;color:rgb(255, 255, 255);border-top-width:medium;border-top-style:none;border-top-color:currentcolor;border-right-width:medium;border-right-style:none;border-right-color:currentcolor;border-bottom-width:medium;border-bottom-style:none;border-bottom-color:currentcolor;border-left-width:medium;border-left-style:none;border-left-color:currentcolor;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-top-left-radius:50%;border-top-right-radius:50%;border-bottom-right-radius:50%;border-bottom-left-radius:50%;font-size:1.1rem;cursor:pointer;box-shadow:rgba(0, 0, 0, 0.2) 0px 4px 14px;opacity:0;transition-property:opacity;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-behavior:normal;z-index:50;}#back-top.show{opacity:1;}#ia7gbw{background-color:rgba(6, 6, 6, 0.74);}footer #back-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;color:rgb(255, 255, 255);border-top-width:medium;border-top-style:none;border-top-color:currentcolor;border-right-width:medium;border-right-style:none;border-right-color:currentcolor;border-bottom-width:medium;border-bottom-style:none;border-bottom-color:currentcolor;border-left-width:medium;border-left-style:none;border-left-color:currentcolor;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-top-left-radius:50%;border-top-right-radius:50%;border-bottom-right-radius:50%;border-bottom-left-radius:50%;font-size:1.1rem;cursor:pointer;box-shadow:rgba(0, 0, 0, 0.2) 0px 4px 14px;opacity:0;transition-property:opacity;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-behavior:normal;z-index:50;}.social-links{display:flex;justify-content:center;row-gap:12px;column-gap:12px;flex-wrap:wrap;margin-top:8px;}.social-links a{width:42px;height:42px;border-top-left-radius:50%;border-top-right-radius:50%;border-bottom-right-radius:50%;border-bottom-left-radius:50%;background-color:rgba(255, 255, 255, 0.12);background-position-x:0%;background-position-y:0%;background-repeat:repeat;background-attachment:scroll;background-image:none;background-size:auto;background-origin:padding-box;background-clip:border-box;color:rgb(255, 255, 255);display:flex;align-items:center;justify-content:center;font-size:1rem;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;transition-property:background, transform;transition-duration:0.2s, 0.2s;transition-timing-function:ease, ease;transition-delay:0s, 0s;transition-behavior:normal, normal;border-top-width:1px;border-top-style:solid;border-top-color:rgba(255, 255, 255, 0.2);border-right-width:1px;border-right-style:solid;border-right-color:rgba(255, 255, 255, 0.2);border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:rgba(255, 255, 255, 0.2);border-left-width:1px;border-left-style:solid;border-left-color:rgba(255, 255, 255, 0.2);border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;}.social-links a:hover{transform:translateY(-3px);}",
     "projectData": {
       "dataSources": [],
-      "assets": [
-        {
-          "type": "image",
-          "src": "/api/assets/load",
-          "unitDim": "px",
-          "height": 0,
-          "width": 0
-        }
-      ],
+      "assets": [],
       "styles": [
         {
           "selectors": [],

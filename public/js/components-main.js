@@ -80,7 +80,9 @@
             'gjs-blocks-basic': { flexGrid: true }
           },
           assetManager: {
-            assets:     '/api/assets/load',
+            // assets vazio: o array real é carregado via fetch em editor.on('load').
+            // (passar a URL como string criava um asset fantasma "load")
+            assets:     [],
             upload:     '/api/assets/upload',
             uploadName: 'files[]',
           },
@@ -153,8 +155,17 @@
               {
                 name: 'Decorações', open: false,
                 properties: [
-                  { name: 'Cor de fundo',  property: 'background-color', type: 'color' },
-                  { name: 'Background',    property: 'background',        type: 'text' },
+                  { name: 'Cor de fundo',    property: 'background-color', type: 'color' },
+                  { name: 'Imagem de fundo', property: 'background-image', type: 'file', functionName: 'url', full: true },
+                  { name: 'Tam. imagem',     property: 'background-size', type: 'select',
+                    options: [{value:'auto'},{value:'cover'},{value:'contain'},{value:'100% 100%'}] },
+                  { name: 'Posição img.',    property: 'background-position', type: 'select',
+                    options: [{value:'center center'},{value:'left top'},{value:'center top'},{value:'right top'},{value:'left center'},{value:'right center'},{value:'left bottom'},{value:'center bottom'},{value:'right bottom'}] },
+                  { name: 'Repetir img.',    property: 'background-repeat', type: 'select',
+                    options: [{value:'no-repeat'},{value:'repeat'},{value:'repeat-x'},{value:'repeat-y'},{value:'space'},{value:'round'}] },
+                  { name: 'Fixação img.',    property: 'background-attachment', type: 'select',
+                    options: [{value:'scroll'},{value:'fixed'},{value:'local'}] },
+                  { name: 'Background (CSS)', property: 'background',        type: 'text' },
                   { name: 'Borda',         property: 'border',            type: 'text' },
                   { name: 'Borda raio',    property: 'border-radius',     type: 'integer', units: ['px','%','em'] },
                   { name: 'Sombra caixa',  property: 'box-shadow',        type: 'text' },
@@ -509,7 +520,108 @@
         editor.on('load', doRemove);
       }());
 
+    // Injeta uma tag <base> no <head> do canvas (about:blank) para que caminhos
+    // root-relative (ex.: /uploads/imagem.jpg) resolvam corretamente dentro do
+    // iframe — necessário para a imagem de fundo aparecer no canvas. Não altera
+    // o HTML/CSS salvo (continua relativo e portável).
+    function injectCanvasBase() {
+      try {
+        const doc = editor.Canvas.getDocument();
+        if (!doc || !doc.head) return;
+        if (doc.getElementById('cms-canvas-base')) return;
+        const base = doc.createElement('base');
+        base.id = 'cms-canvas-base';
+        base.setAttribute('href', window.location.origin + '/');
+        doc.head.insertBefore(base, doc.head.firstChild);
+        // Utilitário de blur dinâmico de fundo (mesmo CSS de global.css) para
+        // que o efeito apareça no canvas durante a edição de componentes.
+        if (!doc.getElementById('cms-canvas-blur')) {
+          const stb = doc.createElement('style');
+          stb.id = 'cms-canvas-blur';
+          stb.textContent =
+            '.cms-bg-blur,.cms-bg-blur-soft,.cms-bg-blur-strong{position:relative;overflow:hidden;}' +
+            '.cms-bg-blur::before,.cms-bg-blur-soft::before,.cms-bg-blur-strong::before{content:"";position:absolute;inset:0;background:inherit;background-size:cover;background-position:center;background-repeat:no-repeat;transform:scale(1.12);z-index:0;}' +
+            '.cms-bg-blur::after,.cms-bg-blur-soft::after,.cms-bg-blur-strong::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;}' +
+            '.cms-bg-blur>*,.cms-bg-blur-soft>*,.cms-bg-blur-strong>*{position:relative;z-index:2;}' +
+            '.cms-bg-blur::before{filter:blur(8px);}.cms-bg-blur::after{background:rgba(0,0,0,0.45);}' +
+            '.cms-bg-blur-soft::before{filter:blur(4px);}.cms-bg-blur-soft::after{background:rgba(0,0,0,0.32);}' +
+            '.cms-bg-blur-strong::before{filter:blur(14px);}.cms-bg-blur-strong::after{background:rgba(0,0,0,0.6);}';
+          doc.head.appendChild(stb);
+        }
+      } catch (e) { /* canvas ainda não pronto */ }
+    }
+    editor.on('canvas:frame:load:head', injectCanvasBase);
+    editor.on('canvas:frame:load', injectCanvasBase);
+    editor.on('load', injectCanvasBase);
+
+    // Força o canvas a repintar o background-image logo após escolher a imagem no
+    // Asset Manager (ver nota detalhada no editor de páginas). O valor salvo não muda.
+    let _bgImgFixing = false;
+    editor.on('asset:close', () => {
+      if (_bgImgFixing) return;
+      // Defere 1 frame para garantir que o StyleManager já propagou o valor ao
+      // componente antes de lermos/forçarmos o repaint.
+      requestAnimationFrame(() => {
+        try {
+          const c = editor.getSelected();
+          if (!c || !c.getStyle || !c.addStyle) return;
+          const bi = (c.getStyle() || {})['background-image'];
+          if (!bi || bi === 'none') return;
+          _bgImgFixing = true;
+          c.addStyle({ 'background-image': 'none' });
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            try { c.addStyle({ 'background-image': bi }); } catch (e) {}
+            _bgImgFixing = false;
+          }));
+        } catch (e) { _bgImgFixing = false; }
+      });
+    });
+
+    // Força o repaint da imagem de fundo logo após escolher no gerenciador
+    // (ver nota no editor de páginas): reescreve a regra background-image
+    // (none -> url) ao fechar o gerenciador, para a imagem aparecer na hora.
+    var _cmsBgNudging = false;
+    function cmsForceBgRepaint() {
+      if (_cmsBgNudging) return;
+      try {
+        var cmp = editor.getSelected();
+        if (!cmp || !cmp.getStyle) return;
+        var sty = cmp.getStyle();
+        var bg = sty && sty['background-image'];
+        if (!bg || bg === 'none') return;
+        _cmsBgNudging = true;
+        cmp.setStyle(Object.assign({}, sty, { 'background-image': 'none' }));
+        cmp.setStyle(Object.assign({}, sty, { 'background-image': bg }));
+      } catch (e) {} finally { _cmsBgNudging = false; }
+    }
+    editor.on('asset:close', function() { setTimeout(cmsForceBgRepaint, 0); });
+
     editor.on('load', async () => {
+
+      // Proteção: descarta qualquer asset "fantasma" com src de API (ver nota no
+      // editor de páginas). Garante que só imagens reais fiquem no gerenciador.
+      editor.on('asset:add', (asset) => {
+        try {
+          const s = String(asset && asset.get ? asset.get('src') : '');
+          if (s.indexOf('/api/') !== -1) {
+            setTimeout(() => { try { editor.AssetManager.remove(asset); } catch (e) {} }, 0);
+          }
+        } catch (e) {}
+      });
+
+      // Sincroniza o Asset Manager com as imagens reais do servidor (public/uploads).
+      // reset + add deixa a lista igual à pasta de uploads, sem fantasmas/duplicatas.
+      try {
+        const r = await fetch('/api/assets/load');
+        if (r.ok) {
+          const list = await r.json();
+          if (Array.isArray(list)) {
+            editor.AssetManager.getAll().reset();
+            const real = list.filter(a => a && a.src && String(a.src).indexOf('/api/') === -1);
+            if (real.length) editor.AssetManager.add(real);
+          }
+        }
+      } catch (e) { console.warn('Falha ao carregar assets:', e); }
 
       // ── Função para anexar click ao logo (abre painel Sobre) ──────────────
       function cmsAttachLogoClick() {
