@@ -1,23 +1,24 @@
 @import "tailwindcss";
 @source "../data/pages.json";
+
 /* ───────────────────────────────────────────────────────────────────────────
-   Utilitário: BLUR DINÂMICO de fundo (borra só a imagem de fundo, não o texto)
+   Utilitário: BLUR DINÂMICO de fundo (desfoca SÓ a imagem de fundo, não o texto)
    ---------------------------------------------------------------------------
-   Como usar: aplique a classe num elemento que tenha background-image.
-   O ::before herda essa imagem (background:inherit) e a borra; o ::after é uma
-   máscara escura para legibilidade do texto branco; o conteúdo fica acima.
-   Funciona com QUALQUER imagem que você definir (por isso "dinâmico").
-   Intensidades: cms-bg-blur (média) · cms-bg-blur-soft (leve) · cms-bg-blur-strong (forte)
-   Obs.: como a classe já inclui a máscara escura, NÃO use também o
-   "Sombra caixa: inset ..." no mesmo elemento (evita escurecer 2x).
+   Técnica: backdrop-filter no ::before. Ele desfoca tudo que está ATRÁS dele —
+   ou seja, a imagem de fundo do próprio elemento — sem precisar "herdar" a
+   imagem (por isso funciona com QUALQUER fundo que você definir = dinâmico).
+   O conteúdo (texto) fica acima (z-index) e permanece nítido.
+
+   Como usar: aplique a classe no MESMO elemento que tem a imagem de fundo
+   (no seu caso, a Row). Funciona junto com sua máscara escura atual
+   ("Sombra caixa: inset 0 0 0 2000px rgba(0,0,0,.5)") — o blur respeita a
+   máscara, sem escurecer duas vezes.
+
+   Intensidades (use UMA): cms-bg-blur (médio) · cms-bg-blur-soft (leve) ·
+   cms-bg-blur-strong (forte).
 ─────────────────────────────────────────────────────────────────────────── */
 .cms-bg-blur,.cms-bg-blur-soft,.cms-bg-blur-strong{position:relative;overflow:hidden;}
-.cms-bg-blur::before,.cms-bg-blur-soft::before,.cms-bg-blur-strong::before{content:"";position:absolute;inset:0;background:inherit;background-size:cover;background-position:center;background-repeat:no-repeat;transform:scale(1.12);z-index:0;}
-.cms-bg-blur::after,.cms-bg-blur-soft::after,.cms-bg-blur-strong::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;}
-.cms-bg-blur>*,.cms-bg-blur-soft>*,.cms-bg-blur-strong>*{position:relative;z-index:2;}
-.cms-bg-blur::before{filter:blur(8px);}
-.cms-bg-blur::after{background:rgba(0,0,0,0.45);}
-.cms-bg-blur-soft::before{filter:blur(4px);}
-.cms-bg-blur-soft::after{background:rgba(0,0,0,0.32);}
-.cms-bg-blur-strong::before{filter:blur(14px);}
-.cms-bg-blur-strong::after{background:rgba(0,0,0,0.6);}
+.cms-bg-blur::before,.cms-bg-blur-soft::before,.cms-bg-blur-strong::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);}
+.cms-bg-blur>*,.cms-bg-blur-soft>*,.cms-bg-blur-strong>*{position:relative;z-index:1;}
+.cms-bg-blur-soft::before{-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);}
+.cms-bg-blur-strong::before{-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);}

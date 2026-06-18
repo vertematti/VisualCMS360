@@ -4450,14 +4450,13 @@
           // transbordar e o rodapé subir. Resetamos altura/linha aqui também.
           '@media (max-width:768px){.gjs-row{display:block;}.gjs-cell{height:auto;}}' +
           // Utilitário de blur dinâmico de fundo (mesmo CSS de global.css) para
-          // que o efeito apareça no canvas durante a edição.
+          // que o efeito apareça no canvas durante a edição. Usa backdrop-filter:
+          // desfoca o que está atrás do ::before (a imagem de fundo do elemento).
           '.cms-bg-blur,.cms-bg-blur-soft,.cms-bg-blur-strong{position:relative;overflow:hidden;}' +
-          '.cms-bg-blur::before,.cms-bg-blur-soft::before,.cms-bg-blur-strong::before{content:"";position:absolute;inset:0;background:inherit;background-size:cover;background-position:center;background-repeat:no-repeat;transform:scale(1.12);z-index:0;}' +
-          '.cms-bg-blur::after,.cms-bg-blur-soft::after,.cms-bg-blur-strong::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;}' +
-          '.cms-bg-blur>*,.cms-bg-blur-soft>*,.cms-bg-blur-strong>*{position:relative;z-index:2;}' +
-          '.cms-bg-blur::before{filter:blur(8px);}.cms-bg-blur::after{background:rgba(0,0,0,0.45);}' +
-          '.cms-bg-blur-soft::before{filter:blur(4px);}.cms-bg-blur-soft::after{background:rgba(0,0,0,0.32);}' +
-          '.cms-bg-blur-strong::before{filter:blur(14px);}.cms-bg-blur-strong::after{background:rgba(0,0,0,0.6);}';
+          '.cms-bg-blur::before,.cms-bg-blur-soft::before,.cms-bg-blur-strong::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);}' +
+          '.cms-bg-blur>*,.cms-bg-blur-soft>*,.cms-bg-blur-strong>*{position:relative;z-index:1;}' +
+          '.cms-bg-blur-soft::before{-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);}' +
+          '.cms-bg-blur-strong::before{-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);}';
         doc.head.appendChild(st);
       } catch (e) { /* canvas ainda não pronto */ }
     }
