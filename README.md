@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <strong>Editor CMS local para criação de sites estáticos com tours virtuais 360°, galerias de fotos e edição visual drag-and-drop.</strong>
+  <strong>Sistema de gerenciamento de conteúdo visual local para criação de sites estáticos com tours virtuais 360°, galerias de fotos e edição visual drag-and-drop.</strong>
 </p>
 
 <p align="center">
@@ -12,7 +12,7 @@
 
 <p align="center">
   <a href="https://gersonlv.com.br/visual_cms_360">Documentação</a> ·
-  <a href="https://github.com/vertematti/VisualCMS360">GitHub</a> ·
+  <a href="https://github.com/vertematti/VCMS360">GitHub</a> ·
   <a href="mailto:gersonlv@gmail.com">Contato</a>
 </p>
 
@@ -31,7 +31,7 @@
 | **Portal** | [gersonlv.com.br](https://gersonlv.com.br) |
 | **Contato** | [gersonlv@gmail.com](mailto:gersonlv@gmail.com) |
 | **Documentação** | [gersonlv.com.br/visual_cms_360](https://gersonlv.com.br/visual_cms_360) |
-| **GitHub** | [github.com/vertematti/VisualCMS360](https://github.com/vertematti/VisualCMS360) |
+| **GitHub** | [github.com/vertematti/VCMS360](https://github.com/vertematti/VCMS360) |
 
 ### 🌟 Open Maker — Educador Maker Voluntário
 
@@ -68,8 +68,8 @@ Gerson é **Educador Maker voluntário** do [Open Maker](https://www.dispensados
 ### Instalação
 
 ```bash
-git clone https://github.com/vertematti/VisualCMS360.git
-cd VisualCMS360
+git clone https://github.com/vertematti/VCMS360.git
+cd VCMS360
 npm install
 npm run dev
 ```
@@ -141,7 +141,7 @@ EXPORT_PORT=4488 npm run export:static
 ## 📁 Estrutura do Projeto
 
 ```
-VisualCMS360/
+VCMS360/
 ├── public/
 │   ├── vendor/                    # Bibliotecas de terceiros (offline, sem CDN)
 │   │   ├── grapes.min.js/css      # GrapesJS

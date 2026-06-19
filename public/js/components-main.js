@@ -724,7 +724,7 @@
         id: 'cms-about-comp',
         label: `<span style="font-size:13px;font-weight:700;letter-spacing:0.03em;padding:0 4px;">Sobre</span>`,
         command: 'cms-open-about-comp',
-        attributes: { title: 'Sobre o VisualCMS360°' },
+        attributes: { title: 'Sobre o Visual CMS 360°' },
         active: false,
         togglable: true,
         className: 'gjs-pn-btn cms-about-btn',
@@ -833,7 +833,7 @@
             </div>
 
             <div style="text-align:center;padding:0 12px 4px;">
-              <p style="margin:0 0 8px;font-size:12.5px;line-height:1.5;color:#cbd5e1;">Editor CMS local para criação de sites estáticos com tours virtuais 360°, galerias de fotos e edição visual drag-and-drop.</p>
+              <p style="margin:0 0 8px;font-size:12.5px;line-height:1.5;color:#cbd5e1;">Sistema de gerenciamento de conteúdo visual local para criação de sites estáticos com tours virtuais 360°, galerias de fotos e edição visual drag-and-drop.</p>
               <p style="margin:0 0 8px;font-size:12px;color:#94a3b8;"><strong style="color:#cbd5e1;">Versão:</strong> 1.0.1</p>
               <p style="margin:0 0 8px;font-size:12px;color:#94a3b8;"><strong style="color:#cbd5e1;">Data de compilação:</strong> 2026-06-16</p>
             </div>
@@ -855,7 +855,7 @@
                 <span class="cms-about-label">Docs</span>
                 <a class="cms-about-link" href="https://gersonlv.com.br/visual_cms_360" target="_blank">gersonlv.com.br/visual_cms_360</a>
                 <span class="cms-about-label">GitHub</span>
-                <a class="cms-about-link" href="https://github.com/vertematti/VisualCMS360" target="_blank">github.com/vertematti/VisualCMS360</a>
+                <a class="cms-about-link" href="https://github.com/vertematti/VCMS360" target="_blank">github.com/vertematti/VCMS360</a>
               </div>
             </div>
 
