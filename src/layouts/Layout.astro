@@ -1488,9 +1488,86 @@ const { lang = 'pt-BR', seoTags = '' } = Astro.props;
 
       /* ── Tour virtual ─────────────────────────────────────────────────── */
       function initVirtualTours() {
+        /* Guarda de rolagem na inicialização do tour ─────────────────────────
+           Pannellum chama .focus() e o A-Frame chama scrollTo() ao iniciar — o
+           que rolava a página até o tour. Aqui forçamos focus({preventScroll})
+           durante a janela de init para o foco não rolar. A defesa PRINCIPAL,
+           porém, é a LAZY INIT mais abaixo: o tour só é criado quando entra na
+           viewport, então no carregamento nada dispara rolagem — vale para
+           qualquer página com tour. */
+        var vtAll = document.querySelectorAll('[data-gjs-type="virtual-tour"]');
+        var vtPending = [];
+        for (var vi = 0; vi < vtAll.length; vi++) {
+          if (!vtAll[vi].dataset.vtInited) vtPending.push(vtAll[vi]);
+        }
+        if (vtPending.length) {
+          /* preventScroll: impedir que .focus() do canvas role a página.
+             Patch único e temporário em HTMLElement.prototype.focus. */
+          if (!window.__vtFocusPatched && window.HTMLElement && HTMLElement.prototype.focus) {
+            window.__vtFocusPatched = true;
+            var vtOrigFocus = HTMLElement.prototype.focus;
+            try {
+              HTMLElement.prototype.focus = function (o) {
+                var opt = {}; if (o) { for (var p in o) opt[p] = o[p]; } opt.preventScroll = true;
+                return vtOrigFocus.call(this, opt);
+              };
+            } catch (e) { HTMLElement.prototype.focus = vtOrigFocus; window.__vtFocusPatched = false; }
+            setTimeout(function () {
+              try { HTMLElement.prototype.focus = vtOrigFocus; } catch (e) {}
+              window.__vtFocusPatched = false;
+            }, 1500);
+          }
+
+          /* Opt-in (modal): rolar suavemente até o primeiro tour marcado.
+             Isso também o traz para a viewport, ativando a lazy init dele. */
+          var vtScrollTarget = null;
+          for (var vj = 0; vj < vtPending.length; vj++) {
+            if (vtPending[vj].getAttribute('data-scroll-on-load') === 'true') { vtScrollTarget = vtPending[vj]; break; }
+          }
+          if (vtScrollTarget) {
+            setTimeout(function () {
+              try { vtScrollTarget.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) {}
+            }, 250);
+          }
+        }
+
         document.querySelectorAll('[data-gjs-type="virtual-tour"]').forEach(function(el) {
           var raw = el.getAttribute('data-tour');
           if (!raw || el.dataset.vtInited) return;
+
+          /* ── LAZY INIT (defesa geral contra o "salto") ─────────────────────
+             Só criamos o Pannellum/A-Frame quando o tour entra na viewport.
+             Como são essas libs que dão foco/scroll no canvas, no carregamento
+             da página NADA dispara — então a página não pula até o tour, em
+             qualquer página que contenha um tour. Quando o usuário rola até o
+             tour, ele já está visível e a inicialização não causa salto
+             perceptível (e o preventScroll acima ainda protege o foco). */
+          if (!el.dataset.vtActivated) {
+            if (!el.dataset.vtObserving) {
+              el.dataset.vtObserving = '1';
+              /* Reservar a altura do tour ANTES de inicializar, para que o
+                 conteúdo abaixo não "pule" (reflow) quando o tour aparecer. */
+              if (!el.style.minHeight) el.style.minHeight = el.getAttribute('data-height') || '500px';
+              if ('IntersectionObserver' in window) {
+                var vtIO = new IntersectionObserver(function (ents, obs) {
+                  for (var z = 0; z < ents.length; z++) {
+                    if (ents[z].isIntersecting) {
+                      ents[z].target.dataset.vtActivated = '1';
+                      obs.disconnect();
+                      initVirtualTours();   /* reexecuta; agora este tour passa do gate */
+                      break;
+                    }
+                  }
+                }, { root: null, rootMargin: '300px 0px', threshold: 0.01 });
+                vtIO.observe(el);
+              } else {
+                /* Sem IntersectionObserver: ativa no próximo tick (fallback) */
+                el.dataset.vtActivated = '1';
+                setTimeout(initVirtualTours, 0);
+              }
+            }
+            return;  /* ainda fora da viewport — não inicializa agora */
+          }
 
           var tourData;
           try {

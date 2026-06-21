@@ -1,7 +1,7 @@
 {
   "cabeçalho": {
     "name": "cabeçalho",
-    "html": "<body id=\"ifwj\"><nav id=\"navbar\">\n</nav><header class=\"text-gray-600 body-font\"><div class=\"container mx-auto flex flex-wrap flex-col md:flex-row items-center p-3 pl-0\"><img id=\"i5bem\" src=\"/uploads/1781739947514_openmaker.png\" class=\"mr-2 ml-2\"/><div id=\"iw55x\">\n      Open Maker\n    </div><nav class=\"md:ml-auto flex flex-wrap items-center text-base justify-center\"><a class=\"mr-5 hover:text-gray-900\">\n        Início\n      </a><a class=\"mr-5 hover:text-gray-900\">\n        Quem somos\n      </a><a class=\"mr-5 hover:text-gray-900\">\n        Conteúdos gratuitos\n      </a><a class=\"mr-5 hover:text-gray-900\">\n        Agenda e contatos\n      </a></nav></div></header></body>",
+    "html": "<body id=\"ifwj\"><nav id=\"navbar\">\n</nav><header class=\"text-gray-600 body-font\"><div class=\"container mx-auto flex flex-wrap flex-col md:flex-row items-center p-3 pl-0\"><img id=\"i5bem\" src=\"/uploads/1781739947514_openmaker.png\" class=\"mr-2 ml-2\"/><div id=\"iw55x\">\n      Open Maker\n    </div><nav class=\"md:ml-auto flex flex-wrap items-center text-base justify-center\"><a href=\"/\" class=\"mr-5 hover:text-gray-900\">\n        Início\n      </a><a href=\"/quem_somos\" class=\"mr-5 hover:text-gray-900\">\n        Quem somos\n      </a><a href=\"/conteudos_gratuitos\" class=\"mr-5 hover:text-gray-900\">\n        Conteúdos gratuitos\n      </a><a href=\"/agenda_e_contatos\" class=\"mr-5 hover:text-gray-900\">\n        Agenda e contatos\n      </a></nav></div></header></body>",
     "js": "",
     "jquery": "",
     "css": "* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}*{box-sizing:border-box;}#navbar{position:sticky;top:0px;z-index:100;background-color:rgba(6, 6, 6, 0.74);}#navbar .nav-inner{max-width:1200px;margin-top:0px;margin-right:auto;margin-bottom:0px;margin-left:auto;padding-top:0px;padding-right:24px;padding-bottom:0px;padding-left:24px;display:flex;align-items:center;justify-content:space-between;height:64px;}#navbar .logo-text{color:rgb(255, 255, 255);font-size:1.25rem;font-weight:700;letter-spacing:0.02em;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;display:flex;align-items:center;row-gap:10px;column-gap:10px;}#navbar .logo-text i{color:var(--accent);font-size:1.4rem;}#nav-links a{color:rgba(255, 255, 255, 0.82);text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;font-size:0.875rem;font-weight:500;padding-top:6px;padding-right:12px;padding-bottom:6px;padding-left:12px;border-top-left-radius:6px;border-top-right-radius:6px;border-bottom-right-radius:6px;border-bottom-left-radius:6px;transition-property:background, color;transition-duration:0.15s, 0.15s;transition-timing-function:ease, ease;transition-delay:0s, 0s;transition-behavior:normal, normal;}#nav-links a:hover{background-color:rgba(255, 255, 255, 0.12);background-position-x:0%;background-position-y:0%;background-repeat:repeat;background-attachment:scroll;background-image:none;background-size:auto;background-origin:padding-box;background-clip:border-box;color:rgb(255, 255, 255);}.text-gray-600.body-font{background-color:rgba(6, 6, 6, 0.74);position:sticky;z-index:1000;top:0px;}.mr-5.hover\\:text-gray-900{color:rgb(255, 255, 255);}#i5bem{color:black;width:40px;min-height:40px;}#iw55x{font-family:\"Segoe UI\", system-ui, -apple-system, sans-serif;color:rgb(255, 255, 255);font-size:1.6em;}@media (max-width: 768px){#nav-links.open{display:flex;}}",
@@ -301,6 +301,9 @@
                                   "mr-5",
                                   "hover:text-gray-900"
                                 ],
+                                "attributes": {
+                                  "href": "/"
+                                },
                                 "components": [
                                   {
                                     "type": "textnode",
@@ -314,6 +317,9 @@
                                   "mr-5",
                                   "hover:text-gray-900"
                                 ],
+                                "attributes": {
+                                  "href": "/quem_somos"
+                                },
                                 "components": [
                                   {
                                     "type": "textnode",
@@ -327,6 +333,9 @@
                                   "mr-5",
                                   "hover:text-gray-900"
                                 ],
+                                "attributes": {
+                                  "href": "/conteudos_gratuitos"
+                                },
                                 "components": [
                                   {
                                     "type": "textnode",
@@ -340,6 +349,9 @@
                                   "mr-5",
                                   "hover:text-gray-900"
                                 ],
+                                "attributes": {
+                                  "href": "/agenda_e_contatos"
+                                },
                                 "components": [
                                   {
                                     "type": "textnode",
@@ -370,12 +382,13 @@
       ],
       "symbols": []
     },
-    "updatedAt": "2026-06-18T03:39:30.417Z"
+    "updatedAt": "2026-06-21T03:23:11.034Z"
   },
   "rodapé": {
     "name": "rodapé",
-    "html": "<body id=\"ifwj\"><footer id=\"ia7gbw\"><div id=\"iph98\" class=\"social-links\"><a href=\"mailto:gersonlv@gmail.com\" title=\"E-mail\"><i class=\"fas fa-envelope\">\n      </i></a><a href=\"https://www.instagram.com/gerson.vertematti/\" target=\"_blank\" title=\"Instagram\"><i class=\"fab fa-instagram\">\n      </i></a><a href=\"https://www.linkedin.com/in/gersonlv/\" target=\"_blank\" title=\"LinkedIn\"><i class=\"fab fa-linkedin-in\">\n      </i></a><a href=\"https://github.com/vertematti\" target=\"_blank\" title=\"GitHub\"><i class=\"fab fa-github\">\n      </i></a><a href=\"https://www.youtube.com/@GersonLuisVertematti\" target=\"_blank\" title=\"YouTube\"><i class=\"fab fa-youtube\">\n      </i></a></div><div class=\"footer-links\"><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/documents.html\" target=\"_blank\">\n      Downloads\n    </a><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/postagens.html\" target=\"_blank\">\n      Postagens\n    </a><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/services.html\" target=\"_blank\">\n      Serviços\n    </a></div><p id=\"it2ho\">\n    © 2025 Gerson Luis Vertematti — System Developer &amp; Maker\n  </p></footer><!-- ── Botão Voltar ao Topo ────────────────────────────────────────────── --><button id=\"back-top\" title=\"Voltar ao topo\"><i class=\"fas fa-chevron-up\">\n  </i></button></body>",
+    "html": "<body id=\"ifwj\"><footer id=\"ia7gbw\"><div id=\"iph98\" class=\"social-links\"><a href=\"mailto:adm@dispensados.com.br\" title=\"E-mail\" id=\"igj0j\"><i class=\"fas fa-envelope\">\n      </i></a><a href=\"https://www.instagram.com/open.maker\" target=\"_blank\" title=\"Instagram\" id=\"iezjk\"><i class=\"fab fa-instagram\">\n      </i></a><a href=\"https://github.com/omrda\" target=\"_blank\" title=\"GitHub\" id=\"irjya\"><i class=\"fab fa-github\">\n      </i></a><a href=\"https://www.youtube.com/@openmaker\" target=\"_blank\" title=\"YouTube\" id=\"idabv\"><i class=\"fab fa-youtube\">\n      </i></a></div><div class=\"footer-links\"><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/documents.html\" target=\"_blank\">\n      Downloads\n    </a><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/postagens.html\" target=\"_blank\">\n      Postagens\n    </a><a href=\"https://gersonlv.com.br/gersonlv.com.br/index.php/services.html\" target=\"_blank\">\n      Serviços\n    </a></div><p id=\"it2ho\">\n    © 2025 Gerson Luis Vertematti — System Developer &amp; Maker\n  </p></footer><!-- ── Botão Voltar ao Topo ────────────────────────────────────────────── --><button id=\"back-top\" title=\"Voltar ao topo\"><i class=\"fas fa-chevron-up\">\n  </i></button></body>",
     "js": "",
+    "jquery": "",
     "css": "* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}footer{color:rgba(255, 255, 255, 0.65);text-align:center;padding-top:28px;padding-right:24px;padding-bottom:28px;padding-left:24px;font-size:0.85rem;}footer .footer-links{display:flex;justify-content:center;row-gap:20px;column-gap:20px;flex-wrap:wrap;margin-bottom:16px;}footer .footer-links a{color:rgba(255, 255, 255, 0.65);text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;transition-property:color;transition-duration:0.15s;transition-timing-function:ease;transition-delay:0s;transition-behavior:normal;}footer .footer-links a:hover{color:rgb(255, 255, 255);}footer .social-links{margin-bottom:16px;}#back-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;color:rgb(255, 255, 255);border-top-width:medium;border-top-style:none;border-top-color:currentcolor;border-right-width:medium;border-right-style:none;border-right-color:currentcolor;border-bottom-width:medium;border-bottom-style:none;border-bottom-color:currentcolor;border-left-width:medium;border-left-style:none;border-left-color:currentcolor;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-top-left-radius:50%;border-top-right-radius:50%;border-bottom-right-radius:50%;border-bottom-left-radius:50%;font-size:1.1rem;cursor:pointer;box-shadow:rgba(0, 0, 0, 0.2) 0px 4px 14px;opacity:0;transition-property:opacity;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-behavior:normal;z-index:50;}#back-top.show{opacity:1;}#ia7gbw{background-color:rgba(6, 6, 6, 0.74);}footer #back-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;color:rgb(255, 255, 255);border-top-width:medium;border-top-style:none;border-top-color:currentcolor;border-right-width:medium;border-right-style:none;border-right-color:currentcolor;border-bottom-width:medium;border-bottom-style:none;border-bottom-color:currentcolor;border-left-width:medium;border-left-style:none;border-left-color:currentcolor;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-top-left-radius:50%;border-top-right-radius:50%;border-bottom-right-radius:50%;border-bottom-left-radius:50%;font-size:1.1rem;cursor:pointer;box-shadow:rgba(0, 0, 0, 0.2) 0px 4px 14px;opacity:0;transition-property:opacity;transition-duration:0.3s;transition-timing-function:ease;transition-delay:0s;transition-behavior:normal;z-index:50;}.social-links{display:flex;justify-content:center;row-gap:12px;column-gap:12px;flex-wrap:wrap;margin-top:8px;}.social-links a{width:42px;height:42px;border-top-left-radius:50%;border-top-right-radius:50%;border-bottom-right-radius:50%;border-bottom-left-radius:50%;background-color:rgba(255, 255, 255, 0.12);background-position-x:0%;background-position-y:0%;background-repeat:repeat;background-attachment:scroll;background-image:none;background-size:auto;background-origin:padding-box;background-clip:border-box;color:rgb(255, 255, 255);display:flex;align-items:center;justify-content:center;font-size:1rem;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;transition-property:background, transform;transition-duration:0.2s, 0.2s;transition-timing-function:ease, ease;transition-delay:0s, 0s;transition-behavior:normal, normal;border-top-width:1px;border-top-style:solid;border-top-color:rgba(255, 255, 255, 0.2);border-right-width:1px;border-right-style:solid;border-right-color:rgba(255, 255, 255, 0.2);border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:rgba(255, 255, 255, 0.2);border-left-width:1px;border-left-style:solid;border-left-color:rgba(255, 255, 255, 0.2);border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;}.social-links a:hover{transform:translateY(-3px);}",
     "projectData": {
       "dataSources": [],
@@ -664,8 +677,9 @@
                           {
                             "type": "link",
                             "attributes": {
-                              "href": "mailto:gersonlv@gmail.com",
-                              "title": "E-mail"
+                              "href": "mailto:adm@dispensados.com.br",
+                              "title": "E-mail",
+                              "id": "igj0j"
                             },
                             "components": [
                               {
@@ -687,9 +701,10 @@
                           {
                             "type": "link",
                             "attributes": {
-                              "href": "https://www.instagram.com/gerson.vertematti/",
+                              "href": "https://www.instagram.com/open.maker",
                               "target": "_blank",
-                              "title": "Instagram"
+                              "title": "Instagram",
+                              "id": "iezjk"
                             },
                             "components": [
                               {
@@ -711,33 +726,10 @@
                           {
                             "type": "link",
                             "attributes": {
-                              "href": "https://www.linkedin.com/in/gersonlv/",
+                              "href": "https://github.com/omrda",
                               "target": "_blank",
-                              "title": "LinkedIn"
-                            },
-                            "components": [
-                              {
-                                "tagName": "i",
-                                "type": "text",
-                                "classes": [
-                                  "fab",
-                                  "fa-linkedin-in"
-                                ],
-                                "components": [
-                                  {
-                                    "type": "textnode",
-                                    "content": "\n      "
-                                  }
-                                ]
-                              }
-                            ]
-                          },
-                          {
-                            "type": "link",
-                            "attributes": {
-                              "href": "https://github.com/vertematti",
-                              "target": "_blank",
-                              "title": "GitHub"
+                              "title": "GitHub",
+                              "id": "irjya"
                             },
                             "components": [
                               {
@@ -759,9 +751,10 @@
                           {
                             "type": "link",
                             "attributes": {
-                              "href": "https://www.youtube.com/@GersonLuisVertematti",
+                              "href": "https://www.youtube.com/@openmaker",
                               "target": "_blank",
-                              "title": "YouTube"
+                              "title": "YouTube",
+                              "id": "idabv"
                             },
                             "components": [
                               {
@@ -887,11 +880,11 @@
       ],
       "symbols": []
     },
-    "updatedAt": "2026-06-14T01:06:06.989Z"
+    "updatedAt": "2026-06-21T03:27:38.024Z"
   },
   "links": {
     "name": "links",
-    "html": "<body id=\"ifwj\"><div id=\"iph98\" class=\"social-links\"><a href=\"mailto:gersonlv@gmail.com\" title=\"E-mail\"><i class=\"fas fa-envelope\"></i></a><a href=\"https://www.instagram.com/gerson.vertematti/\" target=\"_blank\" title=\"Instagram\"><i class=\"fab fa-instagram\"></i></a><a href=\"https://www.linkedin.com/in/gersonlv/\" target=\"_blank\" title=\"LinkedIn\"><i class=\"fab fa-linkedin-in\"></i></a><a href=\"https://github.com/vertematti\" target=\"_blank\" title=\"GitHub\"><i class=\"fab fa-github\"></i></a><a href=\"https://www.youtube.com/@GersonLuisVertematti\" target=\"_blank\" title=\"YouTube\" id=\"ido8g\"><i class=\"fab fa-youtube\"></i></a></div></body>",
+    "html": "<body id=\"ifwj\"><div id=\"iph98\" class=\"social-links\"><a href=\"mailto:adm@dispensados.com.br\" title=\"E-mail\" id=\"igj0j\"><i class=\"fas fa-envelope\">\n      </i></a><a href=\"https://www.instagram.com/open.maker\" target=\"_blank\" title=\"Instagram\" id=\"iezjk\"><i class=\"fab fa-instagram\">\n      </i></a><a href=\"https://github.com/omrda\" target=\"_blank\" title=\"GitHub\" id=\"irjya\"><i class=\"fab fa-github\">\n      </i></a><a href=\"https://www.youtube.com/@openmaker\" target=\"_blank\" title=\"YouTube\" id=\"idabv\"><i class=\"fab fa-youtube\">\n      </i></a></div></body>",
     "js": "",
     "jquery": "",
     "css": "* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}",
@@ -1038,15 +1031,23 @@
                       {
                         "type": "link",
                         "attributes": {
-                          "href": "mailto:gersonlv@gmail.com",
-                          "title": "E-mail"
+                          "href": "mailto:adm@dispensados.com.br",
+                          "title": "E-mail",
+                          "id": "igj0j"
                         },
                         "components": [
                           {
-                            "type": "fa-icon",
+                            "tagName": "i",
+                            "type": "text",
                             "classes": [
                               "fas",
                               "fa-envelope"
+                            ],
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "\n      "
+                              }
                             ]
                           }
                         ]
@@ -1054,16 +1055,24 @@
                       {
                         "type": "link",
                         "attributes": {
-                          "href": "https://www.instagram.com/gerson.vertematti/",
+                          "href": "https://www.instagram.com/open.maker",
                           "target": "_blank",
-                          "title": "Instagram"
+                          "title": "Instagram",
+                          "id": "iezjk"
                         },
                         "components": [
                           {
-                            "type": "fa-icon",
+                            "tagName": "i",
+                            "type": "text",
                             "classes": [
                               "fab",
                               "fa-instagram"
+                            ],
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "\n      "
+                              }
                             ]
                           }
                         ]
@@ -1071,33 +1080,24 @@
                       {
                         "type": "link",
                         "attributes": {
-                          "href": "https://www.linkedin.com/in/gersonlv/",
+                          "href": "https://github.com/omrda",
                           "target": "_blank",
-                          "title": "LinkedIn"
+                          "title": "GitHub",
+                          "id": "irjya"
                         },
                         "components": [
                           {
-                            "type": "fa-icon",
-                            "classes": [
-                              "fab",
-                              "fa-linkedin-in"
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "type": "link",
-                        "attributes": {
-                          "href": "https://github.com/vertematti",
-                          "target": "_blank",
-                          "title": "GitHub"
-                        },
-                        "components": [
-                          {
-                            "type": "fa-icon",
+                            "tagName": "i",
+                            "type": "text",
                             "classes": [
                               "fab",
                               "fa-github"
+                            ],
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "\n      "
+                              }
                             ]
                           }
                         ]
@@ -1105,17 +1105,24 @@
                       {
                         "type": "link",
                         "attributes": {
-                          "href": "https://www.youtube.com/@GersonLuisVertematti",
+                          "href": "https://www.youtube.com/@openmaker",
                           "target": "_blank",
                           "title": "YouTube",
-                          "id": "ido8g"
+                          "id": "idabv"
                         },
                         "components": [
                           {
-                            "type": "fa-icon",
+                            "tagName": "i",
+                            "type": "text",
                             "classes": [
                               "fab",
                               "fa-youtube"
+                            ],
+                            "components": [
+                              {
+                                "type": "textnode",
+                                "content": "\n      "
+                              }
                             ]
                           }
                         ]
@@ -1139,6 +1146,6 @@
       ],
       "symbols": []
     },
-    "updatedAt": "2026-06-18T01:44:27.865Z"
+    "updatedAt": "2026-06-21T03:28:00.989Z"
   }
 }

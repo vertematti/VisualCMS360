@@ -312,6 +312,7 @@
           'tour-height':     '520px',
           'tour-name':       'Tour Virtual',
           'tour-show-thumbs': true,
+          'tour-scroll-on-load': false,
           tagName: 'div',
           attributes: { 'data-gjs-type': 'virtual-tour' },
           toolbar: [
@@ -336,6 +337,7 @@
           const height     = this.get('tour-height') || '56.25vw';
           const name       = this.get('tour-name')   || 'Tour Virtual';
           const showThumbs = this.get('tour-show-thumbs') !== false;
+          const scrollOnLoad = this.get('tour-scroll-on-load') === true;
 
           // btoa evita que o cheerio corrompa o JSON ao processar o HTML salvo
           const tourJson = btoa(unescape(encodeURIComponent(JSON.stringify({ scenes }))));
@@ -348,6 +350,7 @@
             'data-tour-enc':   'base64',
             'data-height':      height,
             'data-show-thumbs': showThumbs ? 'true' : 'false',
+            'data-scroll-on-load': scrollOnLoad ? 'true' : 'false',
             'data-tname':       name,
           }, { silent: true });
 
@@ -386,6 +389,7 @@
       if (attrs['data-height'])     comp.set('tour-height',     attrs['data-height']);
       if (attrs['data-tname'])      comp.set('tour-name',       attrs['data-tname']);
       if (attrs['data-show-thumbs']) comp.set('tour-show-thumbs', attrs['data-show-thumbs'] !== 'false');
+      if (attrs['data-scroll-on-load']) comp.set('tour-scroll-on-load', attrs['data-scroll-on-load'] === 'true');
       if (!attrs['data-tour-id']) {
         comp.addAttributes({ 'data-tour-id': tourUID() });
       }
@@ -464,6 +468,7 @@
       let tourHeight = comp.get('tour-height')     || '520px';
       let tourName   = comp.get('tour-name')       || 'Tour Virtual';
       let showThumbs = comp.get('tour-show-thumbs') !== false;
+      let scrollOnLoad = comp.get('tour-scroll-on-load') === true;
 
       // Telas: lista, editar cena, picker de imagem, hotspot editor
       const wrap = document.createElement('div');
@@ -561,6 +566,7 @@
 
         cfg.appendChild(mkField('Altura', tourHeight, v => { tourHeight = v; }, 'text', '520px'));
         cfg.appendChild(mkCheck('Miniaturas', showThumbs, v => { showThumbs = v; }));
+        cfg.appendChild(mkCheck('Rolar até o tour ao carregar a página', scrollOnLoad, v => { scrollOnLoad = v; }));
         screenList.appendChild(cfg);
 
         // ── Lista de cenas ──
@@ -662,6 +668,7 @@
           comp.set('tour-height',      tourHeight);
           comp.set('tour-name',        tourName);
           comp.set('tour-show-thumbs', showThumbs);
+          comp.set('tour-scroll-on-load', scrollOnLoad);
           editor.Modal.close();
         };
 
@@ -2627,6 +2634,7 @@
             'data-tour-enc':   'base64',
             'data-height':      comp.get('tour-height')      || '56.25vw',
             'data-show-thumbs': comp.get('tour-show-thumbs') !== false ? 'true' : 'false',
+            'data-scroll-on-load': comp.get('tour-scroll-on-load') === true ? 'true' : 'false',
             'data-tname':       comp.get('tour-name')        || 'Tour Virtual',
           }, { silent: true });
         });
